@@ -11,7 +11,7 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <p> This is the index component change for app.json test #2</p>
+        <p> This is the index component change for app.json test #3</p>
       </div>
     );
   }
