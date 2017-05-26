@@ -1,3 +1,4 @@
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -19,4 +20,3 @@ class Index extends React.Component {
 // export default Index;
 
 ReactDOM.render(<Index />, document.getElementById('app'));
-
