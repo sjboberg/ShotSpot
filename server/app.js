@@ -1,23 +1,18 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-var cors = require('cors');
 var path = require('path');
-var router = require('./router/router.js');
+var bodyParser = require('body-parser');
 
 var app = express();
+
 var IP = process.env.IP || 'localhost';
-var PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
-
+var port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(router);
 
-app.listen(PORT, function () {
-  console.log('listening right now on port', PORT);
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
-console.log('listening on', IP, PORT);
 
-module.exports.app = app;
+app.listen(port, function () {
+  console.log('listening to port', port);
+});
