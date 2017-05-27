@@ -4,8 +4,11 @@ import {
   InfoWindow,
   Marker
 } from 'react-google-maps';
+import GoogleStarted from './GoogleStarted.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import _ from 'lodash';
+
 
 class Index extends React.Component {
   constructor(props) {
@@ -15,18 +18,15 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <div id="map">
-          <Map google={this.props.google} />
-        </div>
-        <p> This is the index component change for app.json test #4</p>
+        <GoogleStarted containerElement={ <div style={ { height: '100%' }} />} mapElement={ <div style={{ height: '100%' }} /> }
+          onMapLoad={_.noop}
+          onMapClick={_.noop}
+          onMarkerRightClick={_.noop}
+        />
       </div>
     );
   }
 }
 
-export default GoogleApiComponent({
-  apiKey: 'AIzaSyBViLR1RDD5f4OmqbD2UH0QTwyYsjk8ldE'
-})(Index);
 
-
-ReactDOM.render(<Index />, document.getElementById('app'));
+ReactDOM.render(<GoogleStarted />, document.getElementById('app'));
