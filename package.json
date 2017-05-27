@@ -17,12 +17,14 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
     "material-ui": "^0.18.1",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "pg": "^6.2.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-google-maps": "^6.3.0",
     "react-tap-event-plugin": "^2.0.1",
     "webpack": "^2.4.1"
   }

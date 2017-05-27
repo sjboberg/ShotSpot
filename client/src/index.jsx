@@ -1,7 +1,13 @@
-
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import {
+  withGoogleMap,
+  GoogleMap,
+  InfoWindow,
+  Marker
+} from 'react-google-maps';
+import GoogleStarted from './GoogleStarted.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import _ from 'lodash';
 
 class Index extends React.Component {
   constructor(props) {
@@ -11,12 +17,11 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <p> This is the index component change for app.json test #4</p>
+        <GoogleStarted />
       </div>
     );
   }
 }
 
-// export default Index;
 
 ReactDOM.render(<Index />, document.getElementById('app'));
