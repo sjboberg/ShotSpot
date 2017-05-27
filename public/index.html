@@ -6,11 +6,27 @@
     <meta name="description" content="ShotSpot is a photo community for discovering and sharing locations for photos">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Milos Bunijevac Farrah Bousetta Sebastian Boberg">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBViLR1RDD5f4OmqbD2UH0QTwyYsjk8ldE"></script>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBViLR1RDD5f4OmqbD2UH0QTwyYsjk8ldE&callback=initMap">
+    </script>
   </head>
   <body>
-    <div id="app"></div>
-    <script src="bundle.js"></script>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
 
   </body>
 </html>
