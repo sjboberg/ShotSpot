@@ -1,4 +1,4 @@
- {
+{
   "name": "SpotShot",
   "version": "1.0.0",
   "description": "Find/Share locations for photos",
@@ -22,6 +22,7 @@
     "path": "^0.12.7",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-google-maps": "^6.3.0",
     "react-tap-event-plugin": "^2.0.1",
     "webpack": "^2.4.1"
   }
