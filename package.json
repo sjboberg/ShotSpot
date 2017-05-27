@@ -1,4 +1,4 @@
- {
+{
   "name": "SpotShot",
   "version": "1.0.0",
   "description": "Find/Share locations for photos",
@@ -20,6 +20,7 @@
     "material-ui": "^0.18.1",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
+    "pg": "^6.2.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-tap-event-plugin": "^2.0.1",
