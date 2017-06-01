@@ -4,15 +4,22 @@ import axios from 'axios';
 class Main extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {searchValue: ''};
+    this.updateInputValue = this.updateInputValue.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  updateInputValue (e) {
+    this.setState({
+      searchValue: e.target.value
+    });
   }
 
   handleSubmit(e) {
     axios({
-      url: '/search/result',
-      method: 'POST',
-      data: 'See me'
+      url: '/search/results',
+      method: 'post',
+      data: this.state.searchValue
     }).then((results) => {
       console.log('This is the result from the axios call in Main.jsx: ', results);
     }).catch((error) => {
@@ -25,8 +32,8 @@ class Main extends React.Component {
     return (
       <div>
         <h2>SpotShots</h2>
-         <form className="container" onSubmit={this.handleSubmit}>
-          <input ref="srch" type="search" id="search" name="searchbar" placeholder= "Search for Locations..." />
+         <form className="container" onSubmit={this.handleSubmit} onChange={this.updateInputValue}>
+          <input ref="search" type="search" id="search" name="searchbar" placeholder= "Search for Locations..." />
          </form>
 
       </div>
