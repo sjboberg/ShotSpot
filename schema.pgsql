@@ -9,6 +9,7 @@ CREATE TABLE locations (
   id BIGSERIAL NOT NULL,
   name VARCHAR(40),
   coordinates VARCHAR,
+  cover_photo_id BIGINT,
   PRIMARY KEY (id)
 );
 
