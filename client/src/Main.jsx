@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import axios from 'axios';
 
 class Main extends React.Component {
   constructor(props) {
@@ -10,6 +9,15 @@ class Main extends React.Component {
   }
 
   handleSubmit(e) {
+    axios({
+      url: 'search/result',
+      method: 'POST',
+      data: e.target.value
+    }).then((results) => {
+      console.log('This is the result from the axios call in Main.jsx: ', results);
+    }).catch((error) => {
+      console.log('This is an error from the axios call in Main.jsx: ', error);
+    });
     e.preventDefault();
   }
 
