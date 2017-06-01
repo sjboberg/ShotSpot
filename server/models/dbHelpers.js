@@ -11,6 +11,17 @@ exports.addUser = (username, cb) => {
   });
 }
 
+exports.addLocation = (name, coordinates, cb) => {
+  var query = "INSERT INTO locations (name, coordinates) VALUES ($1, $2);";
+  pool.query(query, [name, coordinates], function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, true);
+    }
+  });
+}
+
 exports.addPhoto = (locationId, userId, uri, cb) => {
   var query = "INSERT INTO photos (location_id, user_id, uri, date) VALUES ($1, $2, $3, CURRENT_TIMESTAMP);";
   pool.query(query, [locationId, userId, uri], function (err, result) {
