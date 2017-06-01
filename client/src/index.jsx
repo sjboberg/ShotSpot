@@ -8,6 +8,7 @@ import GoogleStarted from './GoogleStarted.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
+import Main from './Main.jsx';
 
 class Index extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <GoogleStarted />
+        <Main />
       </div>
     );
   }
