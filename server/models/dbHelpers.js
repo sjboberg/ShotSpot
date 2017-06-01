@@ -10,3 +10,14 @@ exports.addPhoto = (locationId, userId, uri, cb) => {
     }
   });
 }
+
+exports.getPhotoUrl = (photoId, cb) => {
+  var query = "SELECT uri FROM photos WHERE id = $1;";
+  pool.query(query, [photoId], function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.rows[0].uri);
+    }
+  });
+}
