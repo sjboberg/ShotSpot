@@ -10,9 +10,9 @@ class Main extends React.Component {
 
   handleSubmit(e) {
     axios({
-      url: 'search/result',
+      url: '/search/result',
       method: 'POST',
-      data: e.target.value
+      data: 'See me'
     }).then((results) => {
       console.log('This is the result from the axios call in Main.jsx: ', results);
     }).catch((error) => {
@@ -26,8 +26,8 @@ class Main extends React.Component {
       <div>
         <h2>SpotShots</h2>
          <form className="container" onSubmit={this.handleSubmit}>
-          <input ref="srch" type="search" id="search" placeholder="   Search for Locations..." />
-        </form>
+          <input ref="srch" type="search" id="search" name="searchbar" placeholder= "Search for Locations..." />
+         </form>
 
       </div>
     );
