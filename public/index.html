@@ -2,19 +2,37 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ShotSpot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShotSpots</title>
     <meta name="description" content="ShotSpot is a photo community for discovering and sharing locations for photos">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Milos Bunijevac Farrah Bousetta Sebastian Boberg">
     <link rel="stylesheet" type="text/css" href="./styles.css">
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBViLR1RDD5f4OmqbD2UH0QTwyYsjk8ldE&callback=initMap"></script>
   </head>
   <body>
     <h3>My Google Maps Demo</h3>
     <div id="map"></div>
 
+
+  </head>
+  <body>
+
     <div id="app"></div>
+    <script src="jquery-1.6.2.min.js"></script>
     <script src="bundle.js"></script>
+
+    <script>(function() {
+    var curImgId = 0;
+    var numberOfImages = 3; // Change this to the number of background images
+    window.setInterval(function() {
+        $('body').css('background-image','url(/images' + curImgId + '.jpg)');
+        curImgId = (curImgId + 1) % numberOfImages;
+    }, 15 * 1000);
+    })();</script>
 
   </body>
 </html>
+
+
