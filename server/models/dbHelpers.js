@@ -21,3 +21,15 @@ exports.getPhotoUrl = (photoId, cb) => {
     }
   });
 }
+
+exports.addLocationComment = (locationId, userId, content, cb) => {
+  var query = "INSERT INTO comments (location_id, user_id, content, date) VALUES ($1, $2, $3, CURRENT_TIMESTAMP);";
+  pool.query(query, [locationId, userId, content], function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, true);
+    }
+  });
+}
+
