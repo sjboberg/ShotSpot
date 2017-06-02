@@ -1,12 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import SearchComponent from './SearchComponent.jsx';
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {searchValue: ''};
-    this.updateInputValue = this.updateInputValue.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   updateInputValue (e) {
@@ -25,16 +24,13 @@ class Main extends React.Component {
     }).catch((error) => {
       console.log('This is an error from the axios call in Main.jsx: ', error);
     });
-    e.preventDefault();
   }
 
   render() {
     return (
       <div>
         <h2>SpotShots</h2>
-         <form className="container" onSubmit={this.handleSubmit} onChange={this.updateInputValue}>
-          <input ref="search" type="search" id="search" name="searchbar" placeholder= "Search for Locations..." />
-         </form>
+        <SearchComponent submission={this.handleSubmit.bind(this)} changes={this.updateInputValue.bind(this)}/>
 
       </div>
     );
