@@ -1,0 +1,26 @@
+## Customize the test machine
+machine:
+  node:
+    version: 7.10.0
+  npm:
+    version: 4.2.0
+
+  timezone:
+    America/Los_Angeles # Set the timezone
+
+  # Override /etc/hosts
+  hosts:
+    circlehost: 127.0.0.1
+    dev.mycompany.com: 127.0.0.1
+
+  # Add some environment variables
+  environment:
+    CIRCLE_ENV: test
+    DATABASE_URL: process.env.DB_URLSTAGING
+
+## Customize deployment commands
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: shotspots-staging
