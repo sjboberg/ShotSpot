@@ -25,3 +25,9 @@ input {
   position: relative;
   size: 100px;
 }
+
+img {
+  max-height: 200px;
+  max-width: 200px;
+  float: left;
+}
