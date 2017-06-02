@@ -10,13 +10,14 @@ module.exports = {
   },
   listPhotos: {
     get: function(req, res) {
+      var photoArray = [];
       dbHelpers.getAllPhotos(function(err, result) {
         if (err) {
           console.log('This is an error inside controllers for getting all photos: ', err);
         }
         console.log('This is the result from getAllPhotos: ', result);
+
       });
-      res.send('Got to the end of the listPhotos call in controllers');
     }
   }
 };

@@ -50,7 +50,7 @@ exports.getAllPhotos = (cb) => {
     if (err) {
       cb(err, null);
     } else {
-      cb(null, result);
+      cb(null, result.rows);
     }
   });
 };
