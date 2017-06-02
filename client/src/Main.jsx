@@ -19,7 +19,7 @@ class Main extends React.Component {
     axios({
       url: '/search/results',
       method: 'post',
-      data: this.state.searchValue
+      data: {search: this.state.searchValue}
     }).then((results) => {
       console.log('This is the result from the axios call in Main.jsx: ', results);
     }).catch((error) => {
