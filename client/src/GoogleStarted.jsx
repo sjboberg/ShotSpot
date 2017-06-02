@@ -37,7 +37,6 @@ class GoogleStarted extends React.Component {
   render() {
     return (
       <div>
-        <p> for now this just gets the map running thanks to initMap being here.</p>
         {window.initMap()}
       </div>
     );
