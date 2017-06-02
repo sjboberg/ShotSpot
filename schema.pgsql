@@ -9,6 +9,7 @@ CREATE TABLE locations (
   id BIGSERIAL NOT NULL,
   name VARCHAR(40),
   coordinates VARCHAR,
+  cover_photo_id BIGINT,
   PRIMARY KEY (id)
 );
 
@@ -36,7 +37,7 @@ CREATE TABLE photos (
   id BIGSERIAL NOT NULL,
   location_id INTEGER REFERENCES locations(id),
   user_id INTEGER REFERENCES users(id),
-  uri VARCHAR(50),
+  uri VARCHAR(150),
   date DATE,
   PRIMARY KEY (id)
 );
@@ -66,7 +67,7 @@ DROP TABLE IF EXISTS quotes;
 
 CREATE TABLE quotes (
   id BIGSERIAL NOT NULL,
-  content VARCHAR(50),
+  content VARCHAR(150),
   PRIMARY KEY (id)
 );
 
