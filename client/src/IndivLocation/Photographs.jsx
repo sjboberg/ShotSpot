@@ -6,6 +6,10 @@ class Photographs extends React.Component {
     super(props);
   }
 
+  componentWillMount() {
+
+  }
+
   render() {
     return (
       <div>
