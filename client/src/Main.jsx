@@ -6,7 +6,7 @@ import TilePage from './TilePage.jsx';
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {searchValue: '', submitted: false};
+    this.state = {searchValue: '', Latitude: 0, Longitude: 0, submitted: false};
   }
 
   updateInputValue (e) {
@@ -16,15 +16,13 @@ class Main extends React.Component {
   }
 
   handleSubmit(e) {
-    //geocoder here
-
     axios({
       url: '/search/results',
       method: 'post',
       data: {search: this.state.searchValue}
     }).then((results) => {
       console.log('This is the result from the axios call in Main.jsx: ', results);
-      this.setState({submitted: results.data});
+      this.setState({Latitude: results.data.Latitude ,Longitude: results.data.Longitude, submitted: results.data.Search});
     }).catch((error) => {
       console.log('This is an error from the axios call in Main.jsx: ', error);
     });
@@ -41,7 +39,7 @@ class Main extends React.Component {
     return (
       <div>
         <h2>SpotShots</h2>
-        <ComponentToRender submission={this.handleSubmit.bind(this)} changes={this.updateInputValue.bind(this)}/>
+        <ComponentToRender submission={this.handleSubmit.bind(this)} changes={this.updateInputValue.bind(this)} latidude={this.state.Latitude} longitude={this.state.Longitude}/>
         
       </div>
     );

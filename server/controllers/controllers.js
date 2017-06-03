@@ -1,11 +1,24 @@
 var models = require('../models/models.js');
 var dbHelpers = require('../models/dbHelpers.js');
+var NodeGeocoder = require('node-geocoder');
+var options = {
+  provider: 'google'
+}
+var geocoder = NodeGeocoder(options);
 
 module.exports = {
   tilePane: {
     post: function(req, res) {
-      console.log('This is the search bar result from the controller: ', req.body);
-      res.send(true);
+      var coordinates = {}
+      geocoder.geocode('29 champs elysée paris', function(error, result) {
+        coordinates["Latitude"] = result[0].latitude
+        coordinates["Longitude"] = result[0].longitude
+        coordinates["Search"] = true;
+        console.log('These are the coordinates: ', coordinates);
+        console.log('This is the search bar result from the controller: ', req.body);
+        res.send(coordinates);
+      });
+
     }
   },
   listPhotos: {
