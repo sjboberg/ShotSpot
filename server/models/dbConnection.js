@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const pg = require('pg');
 
 var config = {
