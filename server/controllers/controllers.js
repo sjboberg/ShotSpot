@@ -10,7 +10,7 @@ module.exports = {
   tilePane: {
     post: function(req, res) {
       var coordinates = {}
-      geocoder.geocode('29 champs elysée paris', function(error, result) {
+      geocoder.geocode(req.body.search , function(error, result) {
         coordinates["Latitude"] = result[0].latitude
         coordinates["Longitude"] = result[0].longitude
         coordinates["Search"] = true;
