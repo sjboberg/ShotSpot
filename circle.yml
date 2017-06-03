@@ -24,3 +24,6 @@ deployment:
     branch: master
     heroku:
       appname: shotspots-staging
+
+general:
+  build_dir: public
