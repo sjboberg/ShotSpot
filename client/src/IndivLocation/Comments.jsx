@@ -9,7 +9,8 @@ class Comments extends React.Component {
   render() {
     return (
       <div>
-        <h3> This is the comment section </h3>
+        <h3> Tips </h3>
+        Comments here.
       </div>
     );
   }
