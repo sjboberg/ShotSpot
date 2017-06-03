@@ -9,7 +9,8 @@ class Photographs extends React.Component {
   render() {
     return (
       <div>
-        <h3> This is the photograph section </h3>
+        <h3> Photographs </h3>
+        Images will go here
         
       </div>
     );
