@@ -16,6 +16,8 @@ class Main extends React.Component {
   }
 
   handleSubmit(e) {
+    //geocoder here
+
     axios({
       url: '/search/results',
       method: 'post',
