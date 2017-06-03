@@ -76,3 +76,14 @@ exports.getLocationPhotos = (locationId, cb) => {
     }
   });
 };
+
+exports.getLocationComments = (locationId, cb) => {
+  var query = "SELECT comments.id, content, username FROM comments, users WHERE user_id = users.id AND location_id = $1;";
+  pool.query(query, [locationId], function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.rows);
+    }
+  });
+};
