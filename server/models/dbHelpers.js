@@ -87,3 +87,14 @@ exports.getLocationComments = (locationId, cb) => {
     }
   });
 };
+
+exports.getLocationInfo = (locationId, cb) => {
+  var query = "SELECT id, name, coordinates FROM locations WHERE id = $1;";
+  pool.query(query, [locationId], function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.rows);
+    }
+  });
+};
