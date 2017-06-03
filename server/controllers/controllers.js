@@ -8,6 +8,8 @@ module.exports = {
       res.send(true);
     }
   },
+  // this should be updated to get cover photos for each location, not just all photos
+  // as multiple photos can point to one location
   listPhotos: {
     get: function(req, res) {
       var photoArray = [];
@@ -16,12 +18,13 @@ module.exports = {
           console.log('This is an error inside controllers for getting all photos: ', err);
         }
         result.forEach(function(value) {
-          photoArray.push(value.uri);
+          photoArray.push({uri: value.uri, locationId: value.location_id});
         });
         res.send(photoArray);
       });
     }
   },
+  // Should refactor this to use promises to avoid the cb pyramid
   getLocationContent: {
     post: (req, res) => {
       var content = {
