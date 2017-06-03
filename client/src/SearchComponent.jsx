@@ -9,7 +9,7 @@ class SearchComponent extends React.Component {
     return (
       <div>
         <form className="container" onSubmit={this.props.submission} onChange={this.props.changes}>
-          <input ref="search" type="search" id="search" name="searchbar" placeholder= "Search for Locations..." />
+          <input ref="search" type="search" id="search" name="searchbar" placeholder= " Search for Locations..." />
         </form>
       </div>
     );
