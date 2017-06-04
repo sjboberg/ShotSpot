@@ -4,19 +4,20 @@ import axios from 'axios';
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {Latitude: this.props.Latitude, Longitude: this.props.Longitude, photos: ['...Loading']};
+    this.state = {latitude: 0, longitude: 0, photos: ['...Loading']};
   }
   componentWillMount() {
-    var coordinates = {Latitude: this.state.Latitude, Longitude: this.state.Longitude}
+    var coordinates = {latitude: this.props.latitude, longitude: this.props.longitude};
     axios({
       url: '/tilePage/getPhotosInRange',
       method: 'post',
-      data: "coordinates"
+      data: coordinates
     }).then((results) => {
+      this.setState({latitude: results.Latitude, longitude: results.Longitude});
       console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
-    })
+    });
     axios({
       url: '/tilePage/getAllDb',
       method: 'get'
