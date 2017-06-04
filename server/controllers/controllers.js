@@ -23,9 +23,6 @@ module.exports = {
     }
   },
   listPhotos: {
-    post: function(req, res) {
-      res.send("SEE ME FROM THE CONTROLLER???");
-    },
     get: function(req, res) {
       var photoArray = [];
       dbHelpers.getAllPhotos(function(err, result) {
@@ -37,6 +34,10 @@ module.exports = {
         });
         res.send(photoArray);
       });
+    },
+    post: function(req, res) {
+      console.log(req.body);
+      res.send(req.body);
     }
   },
   getLocationContent: {

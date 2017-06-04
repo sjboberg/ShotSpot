@@ -1,18 +1,17 @@
 import React from 'react';
 import axios from 'axios';
-import GoogleStarted from './GoogleStarted.jsx';
 
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {photos: ['...Loading']};
+    this.state = {Latitude: this.props.Latitude, Longitude: this.props.Longitude, photos: ['...Loading']};
   }
-
   componentWillMount() {
+    var coordinates = {Latitude: this.state.Latitude, Longitude: this.state.Longitude}
     axios({
       url: '/tilePage/getPhotosInRange',
       method: 'post',
-      data: "This data being seen?"
+      data: JSON.stringify(coordinates)
     }).then((results) => {
       console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
