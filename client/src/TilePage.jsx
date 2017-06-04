@@ -18,15 +18,6 @@ class TilePage extends React.Component {
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
     });
-    // axios({
-    //   url: '/tilePage/getAllDb',
-    //   method: 'get'
-    // }).then((results) => {
-    //   console.log('This is the result from the tile page: ', results);
-    //   this.setState({photos: results.data});
-    // }).catch((error) => {
-    //   console.log('This is the error in TilePage: ', error);
-    // });
   }
 
   render() {
