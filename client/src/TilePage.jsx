@@ -10,6 +10,15 @@ class TilePage extends React.Component {
 
   componentWillMount() {
     axios({
+      url: '/tilePage/getPhotosInRange',
+      method: 'post',
+      data: "This data being seen?"
+    }).then((results) => {
+      console.log('This is the result from the getphotosinrange post: ', results);
+    }).catch((error) => {
+      console.log('This error is in the TilePage under getphotosinrange: ', error);
+    })
+    axios({
       url: '/tilePage/getAllDb',
       method: 'get'
     }).then((results) => {

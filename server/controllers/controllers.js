@@ -1,6 +1,8 @@
 var models = require('../models/models.js');
 var dbHelpers = require('../models/dbHelpers.js');
 var NodeGeocoder = require('node-geocoder');
+var distance = require('gps-distance');
+
 var options = {
   provider: 'google'
 }
@@ -18,10 +20,12 @@ module.exports = {
         console.log('This is the search bar result from the controller: ', req.body);
         res.send(coordinates);
       });
-
     }
   },
   listPhotos: {
+    post: function(req, res) {
+      res.send("SEE ME FROM THE CONTROLLER???");
+    },
     get: function(req, res) {
       var photoArray = [];
       dbHelpers.getAllPhotos(function(err, result) {
