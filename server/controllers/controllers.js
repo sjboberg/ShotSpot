@@ -36,7 +36,27 @@ module.exports = {
       });
     },
     post: function(req, res) {
+      var radiustoSearch = 25;
       console.log('This should be the latitude: ', req.body);
+      var content = {
+        id: '',
+        name: '',
+        coordinates: '',
+        comments: [],
+        photos: []
+      };
+      dbHelpers.getLocationCoordinates((err, result) => {
+        if (err) {
+          console.log('There is an error in the controller on getLocationCoordinates: ', err);
+        } else {
+          result.forEach(function(location) {
+            var splitcoords = location.coordinates.split(',');
+            var result = distance(req.body.latitude, req.body.longitude, splitcoords[0], splitcoords[1]);
+            var milediff = result * 0.621371;
+            console.log(milediff);
+          });
+        }
+      });
       res.send(req.body);
     }
   },
