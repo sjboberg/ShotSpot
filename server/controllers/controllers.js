@@ -36,28 +36,33 @@ module.exports = {
       });
     },
     post: function(req, res) {
-      var radiustoSearch = 25;
+      var radiustoSearch = 25; //Miles
       console.log('This should be the latitude: ', req.body);
-      var content = {
-        id: '',
-        name: '',
-        coordinates: '',
-        comments: [],
-        photos: []
-      };
+      var locationstosend = [];
       dbHelpers.getLocationCoordinates((err, result) => {
         if (err) {
           console.log('There is an error in the controller on getLocationCoordinates: ', err);
         } else {
           result.forEach(function(location) {
+            var content = {
+              id: '',
+              name: '',
+              coordinates: ''
+            };
             var splitcoords = location.coordinates.split(',');
             var result = distance(req.body.latitude, req.body.longitude, splitcoords[0], splitcoords[1]);
             var milediff = result * 0.621371;
-            console.log(milediff);
+            if (milediff < radiustoSearch) {
+              content.id = location.id;
+              content.name = location.name;
+              content.coordinates = {latitude: splitcoords[0], longitude: splitcoords[1]};
+              locationstosend.push(content);
+            }
+            
           });
         }
+        res.send(locationstosend);
       });
-      res.send(req.body);
     }
   },
   getLocationContent: {
