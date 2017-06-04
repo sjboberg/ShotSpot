@@ -4,7 +4,7 @@ import axios from 'axios';
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {latitude: 0, longitude: 0, photos: ['...Loading']};
+    this.state = {objects: ['...Loading']};
   }
   componentWillMount() {
     var coordinates = {latitude: this.props.latitude, longitude: this.props.longitude};
@@ -13,7 +13,7 @@ class TilePage extends React.Component {
       method: 'post',
       data: coordinates
     }).then((results) => {
-      this.setState({latitude: results.Latitude, longitude: results.Longitude});
+      this.setState({objects: results.data});
       console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
@@ -32,10 +32,10 @@ class TilePage extends React.Component {
   render() {
     return (
       <div>
-        {this.state.photos.map((photo) => {
+        {this.state.objects.map((photo) => {
           return (
-            <div key={photo}>
-              <img key = {photo} src = {photo}></img>
+            <div key={photo.photos}>
+              <img key = {photo.photos} src = {photo.photos}></img>
             </div>
           );
         })} 
