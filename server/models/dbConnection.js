@@ -1,8 +1,9 @@
 const pg = require('pg');
+var secvar = require('../../secretherokudev.js');
 
 var config = {
-  user: process.env.USER,
-  password: process.env.DB_PASSWORD || '',
+  user: process.env.USER || 'postgres',
+  password: process.env.DB_PASSWORD || '' || secvar.Passw,
   database: process.env.DB_NAME || 'snapspots',
   host: process.env.DB_URL || 'localhost',
   port: 5432,

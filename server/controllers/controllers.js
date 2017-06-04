@@ -5,17 +5,17 @@ var distance = require('gps-distance');
 
 var options = {
   provider: 'google'
-}
+};
 var geocoder = NodeGeocoder(options);
 
 module.exports = {
   tilePane: {
     post: function(req, res) {
-      var coordinates = {}
-      geocoder.geocode(req.body.search , function(error, result) {
-        coordinates["Latitude"] = result[0].latitude
-        coordinates["Longitude"] = result[0].longitude
-        coordinates["Search"] = true;
+      var coordinates = {};
+      geocoder.geocode(req.body.search, function(error, result) {
+        coordinates['Latitude'] = result[0].latitude;
+        coordinates['Longitude'] = result[0].longitude;
+        coordinates['Search'] = true;
         console.log('These are the coordinates: ', coordinates);
         console.log('This is the search bar result from the controller: ', req.body);
         res.send(coordinates);
@@ -36,7 +36,7 @@ module.exports = {
       });
     },
     post: function(req, res) {
-      console.log(req.body);
+      console.log('This should be the latitude: ', req.body);
       res.send(req.body);
     }
   },
