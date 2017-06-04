@@ -11,7 +11,7 @@ class TilePage extends React.Component {
     axios({
       url: '/tilePage/getPhotosInRange',
       method: 'post',
-      data: JSON.stringify(coordinates)
+      data: "coordinates"
     }).then((results) => {
       console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
