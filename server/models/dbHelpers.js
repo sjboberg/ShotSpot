@@ -45,7 +45,7 @@ exports.getPhotoUrl = (photoId, cb) => {
 };
 
 exports.getAllPhotos = (cb) => {
-  var query = 'SELECT * FROM public.photos';
+  var query = 'SELECT * FROM photos';
   pool.query(query, function(err, result) {
     if (err) {
       cb(err, null);

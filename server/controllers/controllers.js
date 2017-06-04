@@ -61,7 +61,20 @@ module.exports = {
               locationstosend.push(content);
             }
           });
-          res.send(locationstosend);
+          dbHelpers.getAllPhotos( (err2, result2) => {
+            if (err2) {
+              console.log('this is an error in getAllPhotos handler call in controllers: ', err2);
+            } else {
+              locationstosend.forEach(function(locationvalue) {
+                result2.forEach(function(photoresult) {
+                  if (parseInt(locationvalue.id, 10) === photoresult.location_id) {
+                    locationvalue.photos.push(photoresult.uri);
+                  }
+                });
+              });
+            }
+            res.send(locationstosend);
+          });
         }
       });
     }
