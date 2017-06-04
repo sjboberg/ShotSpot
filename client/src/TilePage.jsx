@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import TileThumb from './TileComponents/TileThumb.jsx';
 
 class TilePage extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class TilePage extends React.Component {
           return (
             <div key={object.photos[0]}>
               {console.log(object)}
-              <img key = {object.photos[0]} src = {object.photos[0]}></img>
+              <TileThumb key={object.photos[0]} photo={object.photos[0]} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
             </div>
           );
         }) : console.log('The map has only the ...Loading portion')} 
