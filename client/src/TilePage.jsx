@@ -32,13 +32,14 @@ class TilePage extends React.Component {
   render() {
     return (
       <div>
-        {this.state.objects.map((photo) => {
+        {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
           return (
-            <div key={photo.photos}>
-              <img key = {photo.photos} src = {photo.photos}></img>
+            <div key={object.photos[0]}>
+              {console.log(object)}
+              <img key = {object.photos[0]} src = {object.photos[0]}></img>
             </div>
           );
-        })} 
+        }) : console.log('The map has only the ...Loading portion')} 
       </div>
     );
   }
