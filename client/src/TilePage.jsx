@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import TileThumb from './TileComponents/TileThumb.jsx';
+import IndivComponent from './IndivComponent.jsx';
 
 class TilePage extends React.Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class TilePage extends React.Component {
     });
   }
 
-  locationSelect(componentName) {
-    this.setState({locSelect: componentName});
+  locationSelect(componentID) {
+    this.setState({locSelect: componentID});
   }
 
   render() {
@@ -43,7 +44,7 @@ class TilePage extends React.Component {
     } else {
       return (
         <div>
-          
+          <IndivComponent locationID={this.state.locSelect}/>
         </div>
       );
     }

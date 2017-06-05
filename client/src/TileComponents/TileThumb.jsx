@@ -7,7 +7,7 @@ class TileThumb extends React.Component {
 
   render() {
     return (
-      <div onClick={() => this.props.locationSelect(this.props.name)}>
+      <div onClick={() => this.props.locationSelect(this.props.id)}>
         Image: <img src={this.props.photo} />
         ID: {this.props.id}
         Name: {this.props.name}
