@@ -134,7 +134,7 @@ module.exports = {
         if(err) {
           return res.send(err);
         }
-        res.send('File Uploaded!');
+        res.redirect(200, 'http://localhost:3000/')
       })
 
     }
