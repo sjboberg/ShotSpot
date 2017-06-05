@@ -4,11 +4,7 @@ var secvars = require('../../secretherokudev.js');
 
 var config = {
   user: process.env.USER || 'postgres',
-<<<<<<< 54a9552f1ecdf14faadc4647876c5debbd9070d0
-  password: process.env.DB_PASSWORD || '',
-=======
   password: process.env.DB_PASSWORD || '' || secvars.Passw,
->>>>>>> "formatting improvements and npm installing missing components from merge"
   database: process.env.DB_NAME || 'snapspots',
   host: process.env.DB_URL || 'localhost',
   port: 5432,
