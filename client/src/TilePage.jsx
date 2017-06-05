@@ -7,6 +7,8 @@ import Locations from './Locations.jsx';
 import MapView from './MapView.jsx';
 const position = [37.7, -122];
 
+
+
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
@@ -52,7 +54,7 @@ class TilePage extends React.Component {
       );
     } else {
       return (
-        <div>
+        <div className="container" id= "tile">
           <IndivComponent locationID={this.state.locSelect}/>
         </div>
       );
