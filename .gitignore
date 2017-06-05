@@ -6,3 +6,4 @@ public/.DS_Store
 googmaptest.js
 apiKeys.js
 secretherokudev.js
+package-lock.json

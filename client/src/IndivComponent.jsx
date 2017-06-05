@@ -24,7 +24,7 @@ class IndivComponent extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="columns">
         <Photographs name= {this.state.location.name} photos={this.state.location.photos}/>
         <Comments name={this.state.location.name} comments={this.state.location.comments}/>
       </div>

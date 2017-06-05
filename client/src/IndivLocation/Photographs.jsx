@@ -10,11 +10,13 @@ class Photographs extends React.Component {
   render() {
     return (
       <div>
-        <h3> Photographs </h3>
+        <h3 className = "photographText"> Photographs </h3>
         {(this.props.photos) ? this.props.photos.map((photo) => {
           return (
-            <div key={photo.uri}>
-              <img key={photo.uri} src = {photo.uri} />
+            <div key={photo.uri} className="centerIndiv">
+              <figure>
+                <img key={photo.uri} src = {photo.uri} />
+              </figure>
             </div>
           );
           

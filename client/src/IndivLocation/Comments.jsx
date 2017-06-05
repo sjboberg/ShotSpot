@@ -10,12 +10,12 @@ class Comments extends React.Component {
   render() {
     return (
       <div>
-        <h3> Tips </h3>
+        <h3 className="commentText"> Comment Section: </h3>
         {(this.props.comments) ? this.props.comments.map((comments) => {
           return (
             <div>
-              <h3> Username: {comments.username} </h3>;
-              <h3> {comments.content}</h3>;
+              <h3 className="commentText"> Username: {comments.username} </h3>
+              <h3 className="commentText"> {comments.content}</h3>
             </div>
           );
         }) : console.log('There are no comments yet for this location')}

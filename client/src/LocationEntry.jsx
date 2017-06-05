@@ -8,16 +8,16 @@ class LocationEntry extends React.Component {
   }
 
   render () {
-	const photo = this.props.photo;
-	return (
-	  <div id="columns">
-	  <figure>
+    const photo = this.props.photo;
+    return (
+      <div id="columns">
+        <figure>
 
-	        <img src = {photo.uri}/>
-	        <figcaption>Baker Beach</figcaption>
-	  </figure>
-	  </div>
-	);
+          <img src = {photo.uri}/>
+          <figcaption>Baker Beach</figcaption>
+        </figure>
+      </div>
+    );
   }
 }
 
