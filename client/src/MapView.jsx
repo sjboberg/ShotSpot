@@ -12,7 +12,7 @@ render() {
     return (
       <div>
         <Map
-          style={{height: "40vh"}}
+          style={{height: "30vh"}}
           center={position}
           zoom={10}>
           <TileLayer

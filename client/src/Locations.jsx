@@ -13,7 +13,7 @@ class Locations extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         {this.props.photos.map((photo, i) => {
           return <LocationEntry key={i} photo={photo} />;
         })}

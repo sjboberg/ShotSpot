@@ -1,4 +1,5 @@
 import React from 'react';
+import Masonry from 'react-masonry-component';
 
 
 class LocationEntry extends React.Component {
@@ -9,8 +10,12 @@ class LocationEntry extends React.Component {
   render () {
 	const photo = this.props.photo;
 	return (
-	  <div>
+	  <div id="columns">
+	  <figure>
+
 	        <img src = {photo.uri}/>
+	        <figcaption>Baker Beach</figcaption>
+	  </figure>
 	  </div>
 	);
   }
