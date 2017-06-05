@@ -2,7 +2,7 @@ var models = require('../models/models.js');
 var dbHelpers = require('../models/dbHelpers.js');
 var NodeGeocoder = require('node-geocoder');
 var distance = require('gps-distance');
-
+var path = require('path');
 var options = {
   provider: 'google'
 };
@@ -122,6 +122,21 @@ module.exports = {
           });
         });
       });
+    }
+  },
+  imageUpload: {
+    post: (req, res) => {
+      if(!req.files){
+        res.send('There was no image selected! Please try again');
+      }
+      let image = req.files.imageToUpload;
+      image.mv(path.join(__dirname, '../../public/images/') + image.name, function(err) {
+        if(err) {
+          return res.send(err);
+        }
+        res.send('File Uploaded!');
+      })
+
     }
   }
 };
