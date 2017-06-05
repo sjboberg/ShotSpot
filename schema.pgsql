@@ -59,6 +59,21 @@ CREATE TABLE comments (
 );
 
 -- ---
+-- Table 'likes'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS likes;
+
+CREATE TABLE likes (
+  id BIGSERIAL NOT NULL,
+  target_class VARCHAR(10),
+  target_id INTEGER,
+  user_id INTEGER REFERENCES users(id),
+  PRIMARY KEY (id)
+);
+
+-- ---
 -- Table 'quotes'
 -- 
 -- ---

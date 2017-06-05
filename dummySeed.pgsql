@@ -33,6 +33,20 @@ INSERT INTO comments (location_id, user_id, content, date) VALUES
 (2, 3, 'Smelly', CURRENT_DATE),
 (3, 3, 'Awesome for night shots', CURRENT_DATE);
 
+INSERT INTO likes (target_class, target_id, user_id) VALUES 
+('photo', 1, 1), 
+('photo', 4, 1), 
+('photo', 3, 1), 
+('photo', 4, 2), 
+('photo', 7, 2), 
+('photo', 1, 2),
+('comment', 1, 1), 
+('comment', 2, 1), 
+('comment', 3, 1), 
+('location', 1, 1), 
+('location', 2, 1), 
+('location', 3, 1);
+
 INSERT INTO quotes (content) VALUES 
 ('"Sebastian is an incredible engineer and you should hire him" -Everyone');
 
