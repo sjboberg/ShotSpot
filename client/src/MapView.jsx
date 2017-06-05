@@ -9,6 +9,7 @@ export class MapView extends React.Component {
     super(props);
   }
   render() {
+    
     return (
       <div>
         <Map
@@ -18,11 +19,11 @@ export class MapView extends React.Component {
           <TileLayer
             url="https://api.mapbox.com/styles/v1/fabbous/cj3gnpyq200112rtiabmb608s/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmFiYm91cyIsImEiOiJjajNnbmlmNmQwMDRlMnFxc3Nwdms0dGV1In0.3IAYFLfwY1Z_eh1OxEognA"
             attribution="<attribution>" />
-      <Marker position={position}>
-       <Popup>
-        <span>Hi Everyone <br /> This is map of SF.</span>
-      </Popup>
-       </Marker>
+            <Marker position={position}>
+            <Popup>
+              <span>Hi Everyone <br /> This is map of SF.</span>
+            </Popup>
+            </Marker>
         
         </Map>
 

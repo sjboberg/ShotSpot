@@ -2,10 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import TileThumb from './TileComponents/TileThumb.jsx';
 import IndivComponent from './IndivComponent.jsx';
-
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Locations from './Locations.jsx';
 import MapView from './MapView.jsx';
-const position = [51.505, -0.09];
+const position = [37.7, -122];
 
 class TilePage extends React.Component {
   constructor(props) {
@@ -36,15 +36,15 @@ class TilePage extends React.Component {
 
     if (this.state.locSelect === 'tileSearch') {
       return (
-      <div>
+      <div className="container" id="tile">
         <MapView />
         {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
           return (
             <div key={object.photos[0]}>
               {console.log(object)}
-
+              <div id="columns">
                 <TileThumb key={object.photos[0]} locationSelect={this.locationSelect.bind(this)} photo={object.photos[0]} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
-
+              </div>
             </div>
           );
         }) : console.log('The map has only the ...Loading portion')} 

@@ -49,11 +49,12 @@ img {
 
 
 #columns {
-  column-width: 320px;
-  column-gap: 15px;
-  width: 90%;
-  max-width: 1100px;
-  margin: 50px auto;
+    column-width: 300px;
+    column-gap: 5px;
+    width: 20%;
+    max-width: 1100px;
+    margin: 125px 10px;
+    float: left;
 }
 
 #columns figure {
@@ -96,6 +97,17 @@ img {
 
 #columns:hover figure:not(:hover) {
   opacity: 0.4;
+}
+
+.photographText {
+  color:white;
+}
+.commentText {
+  color:white;
+}
+
+.centerIndiv {
+
 }
 
 @media screen and (max-width: 750px) { 
