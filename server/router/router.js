@@ -6,6 +6,8 @@ router.post('/search/results', controllers.tilePane.post);
 
 router.get('/tilePage/getAllDb', controllers.listPhotos.get);
 
+router.post('/tilePage/getPhotosInRange', controllers.listPhotos.post);
+
 router.post('/locationPage/getContent', controllers.getLocationContent.post);
 
 module.exports = router;
