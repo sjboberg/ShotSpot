@@ -5,8 +5,9 @@ import TileThumb from './TileComponents/TileThumb.jsx';
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading']};
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch'};
   }
+
   componentWillMount() {
     var coordinates = {latitude: this.props.latitude, longitude: this.props.longitude};
     axios({
@@ -21,19 +22,32 @@ class TilePage extends React.Component {
     });
   }
 
+  locationSelect(componentName) {
+    this.setState({locSelect: componentName});
+  }
+
   render() {
-    return (
+    if (this.state.locSelect === 'tileSearch') {
+      return (
       <div>
         {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
           return (
             <div key={object.photos[0]}>
               {console.log(object)}
-              <TileThumb key={object.photos[0]} photo={object.photos[0]} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
+              <TileThumb key={object.photos[0]} locationSelect={this.locationSelect.bind(this)} photo={object.photos[0]} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
             </div>
           );
         }) : console.log('The map has only the ...Loading portion')} 
       </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          
+        </div>
+      );
+    }
+
   }
 }
 
