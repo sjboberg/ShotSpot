@@ -4,6 +4,7 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var router = require('./router/router.js');
 var models = require('./models/models.js');
+var fileUpload = require('express-fileupload');
 
 
 var app = express();
@@ -14,6 +15,7 @@ var port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(fileUpload());
 app.use(router);
 
 app.use(express.static(path.join(__dirname, '../public')));
