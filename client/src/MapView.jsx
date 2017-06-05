@@ -1,18 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-const position = [37.7, -122]
+const position = [37.7, -122];
 
 
 export class MapView extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
-render() {
+  render() {
     return (
       <div>
         <Map
-          style={{height: "30vh"}}
+          style={{height: '30vh'}}
           center={position}
           zoom={10}>
           <TileLayer
@@ -27,7 +27,7 @@ render() {
         </Map>
 
       </div>
-    )
+    );
   }
 }
 
