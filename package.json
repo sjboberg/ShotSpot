@@ -31,6 +31,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-google-maps": "^6.3.0",
+    "react-masonry-component": "^5.0.7",
     "react-tap-event-plugin": "^2.0.1",
     "request": "^2.81.0",
     "webpack": "^2.4.1"

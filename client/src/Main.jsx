@@ -37,10 +37,9 @@ class Main extends React.Component {
     }
 
     return (
-      <div>
-        <h2>SpotShots</h2>
+
+      <div className="container" id="home">
         <ComponentToRender submission={this.handleSubmit.bind(this)} changes={this.updateInputValue.bind(this)} latitude={this.state.Latitude} longitude={this.state.Longitude}/>
-        
       </div>
     );
   }

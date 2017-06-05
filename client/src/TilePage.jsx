@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import TileThumb from './TileComponents/TileThumb.jsx';
 import IndivComponent from './IndivComponent.jsx';
+import Locations from './Locations.jsx';
+import MapView from './MapView.jsx';
+const position = [51.505, -0.09];
 
 class TilePage extends React.Component {
   constructor(props) {
@@ -10,6 +13,7 @@ class TilePage extends React.Component {
   }
 
   componentWillMount() {
+
     var coordinates = {latitude: this.props.latitude, longitude: this.props.longitude};
     axios({
       url: '/tilePage/getPhotosInRange',
@@ -28,6 +32,7 @@ class TilePage extends React.Component {
   }
 
   render() {
+
     if (this.state.locSelect === 'tileSearch') {
       return (
       <div>
@@ -51,5 +56,6 @@ class TilePage extends React.Component {
 
   }
 }
+
 
 export default TilePage;
