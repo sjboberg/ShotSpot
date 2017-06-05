@@ -107,10 +107,10 @@ img {
 }
 
 .photographText {
-  color:white;
+  color:black;
 }
 .commentText {
-  color:white;
+  color:black;
 }
 
 @media screen and (max-width: 750px) { 
