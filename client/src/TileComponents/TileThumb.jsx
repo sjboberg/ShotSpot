@@ -1,4 +1,5 @@
 import React from 'react';
+import Masonry from 'react-masonry-component';
 
 class TileThumb extends React.Component {
   constructor(props) {
@@ -8,11 +9,12 @@ class TileThumb extends React.Component {
   render() {
     return (
       <div onClick={() => this.props.locationSelect(this.props.id)}>
-        Image: <img src={this.props.photo} />
-        ID: {this.props.id}
-        Name: {this.props.name}
-        Lat: {this.props.latitude}
-        Long: {this.props.longitude}
+        <figure>
+          <img src={this.props.photo} />
+          <figcaption>
+            {this.props.name}
+          </figcaption>
+        </figure>
       </div>
     );
   }
