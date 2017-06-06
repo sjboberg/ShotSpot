@@ -1,3 +1,5 @@
+require('dotenv').config()
+var flick = require('../models/flickr/upload.js');
 var models = require('../models/models.js');
 var dbHelpers = require('../models/dbHelpers.js');
 var NodeGeocoder = require('node-geocoder');
@@ -9,6 +11,7 @@ var options = {
 };
 var geocoder = NodeGeocoder(options);
 var flick = require('../models/flickr/upload.js');
+
 var shortid = require('shortid');
  
 module.exports = {
@@ -141,7 +144,7 @@ module.exports = {
         }
         res.redirect(200, 'http://localhost:3000/')
       })
-
+      
       var uniqueFileName = path.join(__dirname, '../../public/images/' + newName + '.' + testimage[1])
       fs.renameSync(path.join(__dirname, '../../public/images/'+ image.name), uniqueFileName)
       flick.upload(image.name, uniqueFileName)
