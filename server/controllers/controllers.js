@@ -8,12 +8,9 @@ var options = {
   provider: 'google'
 };
 var geocoder = NodeGeocoder(options);
-<<<<<<< HEAD
-
-=======
+var flick = require('../models/flickr/upload.js');
 var shortid = require('shortid');
  
->>>>>>> "file uploads from client to server, then gets renamed, uploaded to flickr, and then deleted from server"
 module.exports = {
   tilePane: {
     post: function(req, res) {
@@ -144,13 +141,7 @@ module.exports = {
         }
         res.redirect(200, 'http://localhost:3000/')
       })
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-      flick.upload(image.name, path.join(__dirname, '../../public/images/' + image.name))
->>>>>>> "This uploads an image from the client to the server and from the server to flickr and returns the flickr url"
-=======
       var uniqueFileName = path.join(__dirname, '../../public/images/' + newName + '.' + testimage[1])
       fs.renameSync(path.join(__dirname, '../../public/images/'+ image.name), uniqueFileName)
       flick.upload(image.name, uniqueFileName)
@@ -161,7 +152,6 @@ module.exports = {
             console.log('successfully deleted local image');                                
         }
       });
->>>>>>> "file uploads from client to server, then gets renamed, uploaded to flickr, and then deleted from server"
     }
   }
 };

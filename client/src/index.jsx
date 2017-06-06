@@ -22,4 +22,4 @@ class Index extends React.Component {
 }
 
 
-ReactDOM.render(<Main />, document.getElementById('app'));
+ReactDOM.render(<ImageUpload />, document.getElementById('app'));
