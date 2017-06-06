@@ -109,3 +109,14 @@ exports.getLocationCoordinates = (cb) => {
     }
   });
 };
+
+exports.addLike = (targetClass, targetId, userId, cb) => {
+  var query = 'INSERT INTO likes (target_class, target_id, user_id) SELECT CAST($1 AS VARCHAR), $2, $3 WHERE NOT EXISTS (SELECT * FROM likes WHERE target_class = $1 AND target_id = $2 AND user_id = $3);';
+  pool.query(query, [targetClass, targetId, userId], function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, true);
+    }
+  });
+};
