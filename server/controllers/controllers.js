@@ -132,6 +132,7 @@ module.exports = {
         res.send('There was no image selected! Please try again');
       }
       let image = req.files.imageToUpload;
+      console.log(image);
       image.mv(path.join(__dirname, '../../public/images/') + image.name, function(err) {
         if(err) {
           return res.send(err);
