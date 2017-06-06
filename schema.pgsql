@@ -10,6 +10,7 @@ CREATE TABLE locations (
   name VARCHAR(40),
   coordinates VARCHAR,
   cover_photo_id BIGINT,
+  like_count INTEGER DEFAULT 0,
   PRIMARY KEY (id)
 );
 
@@ -39,6 +40,7 @@ CREATE TABLE photos (
   user_id INTEGER REFERENCES users(id),
   uri VARCHAR(150),
   date DATE,
+  like_count INTEGER DEFAULT 0,
   PRIMARY KEY (id)
 );
 
@@ -55,6 +57,7 @@ CREATE TABLE comments (
   user_id INTEGER REFERENCES users(id),
   content TEXT,
   date DATE,
+  like_count INTEGER DEFAULT 0,
   PRIMARY KEY (id)
 );
 
