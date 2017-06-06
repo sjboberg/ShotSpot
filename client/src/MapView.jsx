@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-const position = [37.7, -122];
+const position = [39.9528, -75.1638];
 
 
 export class MapView extends React.Component {
