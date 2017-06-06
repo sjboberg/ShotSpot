@@ -131,16 +131,14 @@ module.exports = {
       if(!req.files){
         res.send('There was no image selected! Please try again');
       }
-      flick.upload('Mario', path.join(__dirname, '../../public/images/mario.png'))
-
-      // let image = req.files.imageToUpload;
-      // image.mv(path.join(__dirname, '../../public/images/') + image.name, function(err) {
-      //   if(err) {
-      //     return res.send(err);
-      //   }
-      //   res.redirect(200, 'http://localhost:3000/')
-      // })
-
+      let image = req.files.imageToUpload;
+      image.mv(path.join(__dirname, '../../public/images/') + image.name, function(err) {
+        if(err) {
+          return res.send(err);
+        }
+        res.redirect(200, 'http://localhost:3000/')
+      })
+      flick.upload(image.name, path.join(__dirname, '../../public/images/' + image.name))
     }
   }
 };
