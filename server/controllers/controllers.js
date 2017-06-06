@@ -1,3 +1,5 @@
+require('dotenv').config()
+var flick = require('../models/flickr/upload.js');
 var models = require('../models/models.js');
 var dbHelpers = require('../models/dbHelpers.js');
 var NodeGeocoder = require('node-geocoder');
@@ -7,7 +9,7 @@ var options = {
   provider: 'google'
 };
 var geocoder = NodeGeocoder(options);
-
+ 
 module.exports = {
   tilePane: {
     post: function(req, res) {
@@ -129,13 +131,15 @@ module.exports = {
       if(!req.files){
         res.send('There was no image selected! Please try again');
       }
-      let image = req.files.imageToUpload;
-      image.mv(path.join(__dirname, '../../public/images/') + image.name, function(err) {
-        if(err) {
-          return res.send(err);
-        }
-        res.redirect(200, 'http://localhost:3000/')
-      })
+      flick.upload('Mario', path.join(__dirname, '../../public/images/mario.png'))
+
+      // let image = req.files.imageToUpload;
+      // image.mv(path.join(__dirname, '../../public/images/') + image.name, function(err) {
+      //   if(err) {
+      //     return res.send(err);
+      //   }
+      //   res.redirect(200, 'http://localhost:3000/')
+      // })
 
     }
   }
