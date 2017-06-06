@@ -3,11 +3,17 @@ var dbHelpers = require('../models/dbHelpers.js');
 var NodeGeocoder = require('node-geocoder');
 var distance = require('gps-distance');
 var path = require('path');
+var fs = require('fs');
 var options = {
   provider: 'google'
 };
 var geocoder = NodeGeocoder(options);
+<<<<<<< HEAD
 
+=======
+var shortid = require('shortid');
+ 
+>>>>>>> "file uploads from client to server, then gets renamed, uploaded to flickr, and then deleted from server"
 module.exports = {
   tilePane: {
     post: function(req, res) {
@@ -130,7 +136,8 @@ module.exports = {
         res.send('There was no image selected! Please try again');
       }
       let image = req.files.imageToUpload;
-      console.log(image);
+      let newName = shortid.generate();
+      let testimage = image.name.split('.')
       image.mv(path.join(__dirname, '../../public/images/') + image.name, function(err) {
         if(err) {
           return res.send(err);
@@ -138,10 +145,23 @@ module.exports = {
         res.redirect(200, 'http://localhost:3000/')
       })
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
       flick.upload(image.name, path.join(__dirname, '../../public/images/' + image.name))
 >>>>>>> "This uploads an image from the client to the server and from the server to flickr and returns the flickr url"
+=======
+      var uniqueFileName = path.join(__dirname, '../../public/images/' + newName + '.' + testimage[1])
+      fs.renameSync(path.join(__dirname, '../../public/images/'+ image.name), uniqueFileName)
+      flick.upload(image.name, uniqueFileName)
+      fs.unlink(uniqueFileName, (err) => {
+        if (err) {
+            console.log("failed to delete local image:"+err);
+        } else {
+            console.log('successfully deleted local image');                                
+        }
+      });
+>>>>>>> "file uploads from client to server, then gets renamed, uploaded to flickr, and then deleted from server"
     }
   }
 };
