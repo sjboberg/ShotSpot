@@ -120,3 +120,37 @@ exports.addLike = (targetClass, targetId, userId, cb) => {
     }
   });
 };
+
+// unfortuantely these three function can't be wrapped into one with our current design
+exports.updateCommentLikeCount = (cb) => {
+  var query = "WITH counted AS (SELECT target_class, target_id, COUNT(*) FROM likes GROUP BY target_id, target_class) UPDATE comments SET like_count = c.count FROM counted c WHERE c.target_class = 'comment' AND c.target_id = id;";
+  pool.query(query, function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.command + ' ' + result.rowCount);
+    }
+  });
+};
+
+exports.updatePhotoLikeCount = (cb) => {
+  var query = "WITH counted AS (SELECT target_class, target_id, COUNT(*) FROM likes GROUP BY target_id, target_class) UPDATE photos SET like_count = c.count FROM counted c WHERE c.target_class = 'photo' AND c.target_id = id;";
+  pool.query(query, function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.command + ' ' + result.rowCount);
+    }
+  });
+};
+
+exports.updateLocationLikeCount = (cb) => {
+  var query = "WITH counted AS (SELECT target_class, target_id, COUNT(*) FROM likes GROUP BY target_id, target_class) UPDATE locations SET like_count = c.count FROM counted c WHERE c.target_class = 'location' AND c.target_id = id;";
+  pool.query(query, function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.command + ' ' + result.rowCount);
+    }
+  });
+};
