@@ -2,10 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import TileThumb from './TileComponents/TileThumb.jsx';
 import IndivComponent from './IndivComponent.jsx';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-import Locations from './Locations.jsx';
 import MapView from './MapView.jsx';
-const position = [37.7, -122];
+
 
 
 
