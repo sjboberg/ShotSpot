@@ -136,7 +136,11 @@ module.exports = {
         }
         res.redirect(200, 'http://localhost:3000/')
       })
+<<<<<<< HEAD
 
+=======
+      flick.upload(image.name, path.join(__dirname, '../../public/images/' + image.name))
+>>>>>>> "This uploads an image from the client to the server and from the server to flickr and returns the flickr url"
     }
   }
 };
