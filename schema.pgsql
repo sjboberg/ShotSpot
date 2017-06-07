@@ -9,7 +9,7 @@ CREATE TABLE locations (
   id BIGSERIAL NOT NULL,
   name VARCHAR(40),
   coordinates VARCHAR,
-  cover_photo_id BIGINT,
+  cover_photo_id BIGINT DEFAULT 0,
   like_count INTEGER DEFAULT 0,
   PRIMARY KEY (id)
 );
@@ -102,3 +102,5 @@ CREATE TABLE landing_images (
   name VARCHAR(20),
   PRIMARY KEY (id)
 );
+
+INSERT INTO photos (id, uri) VALUES (0, 'https://c1.staticflickr.com/5/4208/35000849792_1f62b924ba.jpg');
