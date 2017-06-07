@@ -111,7 +111,15 @@ exports.getLocationCoordinates = (cb) => {
 };
 
 exports.addLike = (targetClass, targetId, userId, cb) => {
-  var query = 'INSERT INTO likes (target_class, target_id, user_id) SELECT CAST($1 AS VARCHAR), $2, $3 WHERE NOT EXISTS (SELECT * FROM likes WHERE target_class = $1 AND target_id = $2 AND user_id = $3);';
+  var query = 'INSERT INTO likes (target_class, target_id, user_id) \
+  SELECT CAST($1 AS VARCHAR), $2, $3 \
+  WHERE NOT EXISTS (\
+    SELECT * \
+    FROM likes \
+    WHERE target_class = $1 \
+    AND target_id = $2 \
+    AND user_id = $3\
+  );';
   pool.query(query, [targetClass, targetId, userId], function (err, result) {
     if (err) {
       cb(err, null);
@@ -123,7 +131,15 @@ exports.addLike = (targetClass, targetId, userId, cb) => {
 
 // unfortuantely these three function can't be wrapped into one with our current design
 exports.updateCommentLikeCount = (cb) => {
-  var query = "WITH counted AS (SELECT target_class, target_id, COUNT(*) FROM likes GROUP BY target_id, target_class) UPDATE comments SET like_count = c.count FROM counted c WHERE c.target_class = 'comment' AND c.target_id = id;";
+  var query = "WITH counted AS (\
+    SELECT target_class, target_id, COUNT(*) \
+    FROM likes \
+    GROUP BY target_id, target_class) \
+  UPDATE comments \
+  SET like_count = c.count \
+  FROM counted c \
+  WHERE c.target_class = 'comment' \
+  AND c.target_id = id;";
   pool.query(query, function (err, result) {
     if (err) {
       cb(err, null);
@@ -134,7 +150,14 @@ exports.updateCommentLikeCount = (cb) => {
 };
 
 exports.updatePhotoLikeCount = (cb) => {
-  var query = "WITH counted AS (SELECT target_class, target_id, COUNT(*) FROM likes GROUP BY target_id, target_class) UPDATE photos SET like_count = c.count FROM counted c WHERE c.target_class = 'photo' AND c.target_id = id;";
+  var query = "WITH counted AS (\
+    SELECT target_class, target_id, COUNT(*) \
+    FROM likes \
+    GROUP BY target_id, target_class) \
+  UPDATE photos SET like_count = c.count \
+  FROM counted c \
+  WHERE c.target_class = 'photo' \
+  AND c.target_id = id;";
   pool.query(query, function (err, result) {
     if (err) {
       cb(err, null);
@@ -145,7 +168,14 @@ exports.updatePhotoLikeCount = (cb) => {
 };
 
 exports.updateLocationLikeCount = (cb) => {
-  var query = "WITH counted AS (SELECT target_class, target_id, COUNT(*) FROM likes GROUP BY target_id, target_class) UPDATE locations SET like_count = c.count FROM counted c WHERE c.target_class = 'location' AND c.target_id = id;";
+  var query = "WITH counted AS (\
+    SELECT target_class, target_id, COUNT(*) \
+    FROM likes \
+    GROUP BY target_id, target_class) \
+  UPDATE locations SET like_count = c.count \
+  FROM counted c \
+  WHERE c.target_class = 'location' \
+  AND c.target_id = id;";
   pool.query(query, function (err, result) {
     if (err) {
       cb(err, null);
