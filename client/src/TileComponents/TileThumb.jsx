@@ -1,5 +1,4 @@
 import React from 'react';
-import Masonry from 'react-masonry-component';
 
 class TileThumb extends React.Component {
   constructor(props) {

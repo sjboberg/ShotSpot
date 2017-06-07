@@ -110,6 +110,23 @@ input {
   color:black;
 }
 
+.image_grid {
+    width: 700px;
+    margin-bottom: $large-spacing;
+}
+
+.image_grid img {
+    width: 200px;
+    height: 150px;
+    margin-top: $small-spacing;
+    margin-right: $small-spacing;
+}
+
+.image_grid img:last-of-type {
+    margin-right: 0;
+}
+
+
 @media screen and (max-width: 750px) { 
   #columns { column-gap: 0px; }
   #columns figure { width: 100%; }
