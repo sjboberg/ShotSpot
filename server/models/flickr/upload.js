@@ -28,7 +28,7 @@ exports.upload = function(title, fileLocation) {
   var uploadOptions = {
     photos: [{
       title: title,
-      photo: __dirname + fileLocation
+      photo: fileLocation
     }]
   };
 
