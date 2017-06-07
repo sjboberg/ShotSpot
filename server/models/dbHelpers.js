@@ -154,3 +154,26 @@ exports.updateLocationLikeCount = (cb) => {
     }
   });
 };
+
+exports.updateCoverPhotos = (cb) => {
+  var query = "WITH maxes AS (\
+    SELECT photos.id, photos.location_id, photos.like_count \
+    FROM photos \
+    INNER JOIN (\
+      SELECT location_id, MAX(like_count) max \
+      FROM photos \
+      GROUP BY location_id) a \
+    ON a.location_id = photos.location_id \
+    AND max = photos.like_count) \
+  UPDATE locations \
+  SET cover_photo_id = m.id \
+  FROM maxes m\
+  WHERE m.location_id = locations.id;";
+  pool.query(query, function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result);
+    }
+  });
+};
