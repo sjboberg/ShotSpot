@@ -33,7 +33,7 @@ ReactDOM.render(
 <Router>
   <div>
     <Route exact path="/" component={Index} />
-    <Route path="/TilePage" component={TilePage} />
+    <Route path="/TilePage" render={() => <TilePage myProp={'test'}/>}/> />
     <Route path="/ImageUpload" component={ImageUpload} />
   </div>
 </Router>
