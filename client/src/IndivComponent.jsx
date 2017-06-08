@@ -2,9 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Comments from './IndivLocation/Comments.jsx';
 import Photographs from './IndivLocation/Photographs.jsx';
-
-
-
+import { Redirect } from 'react-router';
 
 class IndivComponent extends React.Component {
   constructor(props) {
@@ -16,7 +14,7 @@ class IndivComponent extends React.Component {
     axios({
       url: '/locationPage/getContent',
       method: 'post',
-      data: {locationId: this.props.locationID}
+      data: {locationId: this.props.location.state.locSelect}
     }).then((results) => {
       this.setState({location: results.data});
       console.log('This is the result from the IndivComponent page: ', results);

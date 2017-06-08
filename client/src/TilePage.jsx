@@ -3,14 +3,12 @@ import axios from 'axios';
 import TileThumb from './TileComponents/TileThumb.jsx';
 import IndivComponent from './IndivComponent.jsx';
 import MapView from './MapView.jsx';
-
-
-
+import { Redirect } from 'react-router';
 
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', };
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch'};
   }
 
   componentWillMount() {
@@ -36,31 +34,24 @@ class TilePage extends React.Component {
   }
 
   render() {
-
-    if (this.state.locSelect === 'tileSearch') {
-      return (
-      <div className="container" id="tile">
-        <MapView searchCoordinates={this.state.searchCoordinates}/>
-        {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
-          return (
-            <div key={object.coverPhoto}>
-              {console.log(object)}
-              <div id="columns">
-                <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
-              </div>
-            </div>
-          );
-        }) : console.log('The map has only the ...Loading portion')} 
-      </div>
-      );
-    } else {
-      return (
-        <div className="container" id= "tile">
-          <IndivComponent locationID={this.state.locSelect}/>
-        </div>
-      );
+    if(this.state.locSelect !== 'tileSearch') {
+      return <Redirect push to={{pathname: '/IndivComponent', state: {locSelect: this.state.locSelect}}} />;
     }
-
+    return (
+    <div className="container" id="tile">
+      <MapView searchCoordinates={this.state.searchCoordinates}/>
+      {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
+        return (
+          <div key={object.coverPhoto}>
+            {console.log(object)}
+            <div id="columns">
+              <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
+            </div>
+          </div>
+        );
+      }) : console.log('The map has only the ...Loading portion')} 
+    </div>
+    );
   }
 }
 
