@@ -26,11 +26,13 @@ class Index extends React.Component {
   }
 }
 
+export default Index;
+
 
 ReactDOM.render(
 <Router>
   <div>
-    <Route exact path="/" component={Main} />
+    <Route exact path="/" component={Index} />
     <Route path="/TilePage" component={TilePage} />
     <Route path="/ImageUpload" component={ImageUpload} />
   </div>
