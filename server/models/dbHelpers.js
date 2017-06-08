@@ -99,8 +99,10 @@ exports.getLocationInfo = (locationId, cb) => {
   });
 };
 
-exports.getLocationCoordinates = (cb) => {
-  var query = 'SELECT * FROM locations';
+exports.getLocationsAndCoverPhotos = (cb) => {
+  var query = 'SELECT locations.id AS id, locations.name AS name, locations.coordinates AS coordinates, uri \
+  FROM locations, photos \
+  WHERE locations.cover_photo_id = photos.id;';
   pool.query(query, function(err, result) {
     if (err) {
       cb(err, null);
