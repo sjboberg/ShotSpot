@@ -40,7 +40,7 @@ class TilePage extends React.Component {
     if (this.state.locSelect === 'tileSearch') {
       return (
       <div className="container" id="tile">
-        {/*<MapView searchCoordinates={this.state.searchCoordinates}/>*/}
+        <MapView searchCoordinates={this.state.searchCoordinates}/>
         {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
           return (
             <div key={object.coverPhoto}>
