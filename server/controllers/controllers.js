@@ -47,16 +47,16 @@ module.exports = {
       let radiustoSearch = 25; //Miles
       console.log('This should be the latitude: ', req.body);
       let locationstosend = [];
-      dbHelpers.getLocationCoordinates((err, result) => {
+      dbHelpers.getLocationsAndCoverPhotos((err, result) => {
         if (err) {
-          console.log('There is an error in the controller on getLocationCoordinates: ', err);
+          console.log('There is an error in the controller on getLocationsAndCoverPhotos: ', err);
         } else {
           result.forEach(function(location) {
             let content = {
               id: '',
               name: '',
               coordinates: '',
-              photos: [],
+              coverPhoto: [],
               comments: []
             };
             let splitcoords = location.coordinates.split(',');
@@ -65,24 +65,12 @@ module.exports = {
             if (milediff < radiustoSearch) {
               content.id = location.id;
               content.name = location.name;
+              content.coverPhoto.push(location.uri);
               content.coordinates = {latitude: splitcoords[0], longitude: splitcoords[1]};
               locationstosend.push(content);
             }
           });
-          dbHelpers.getAllPhotos( (err2, result2) => {
-            if (err2) {
-              console.log('this is an error in getAllPhotos handler call in controllers: ', err2);
-            } else {
-              locationstosend.forEach(function(locationvalue) {
-                result2.forEach(function(photoresult) {
-                  if (parseInt(locationvalue.id, 10) === photoresult.location_id) {
-                    locationvalue.photos.push(photoresult.uri);
-                  }
-                });
-              });
-            }
-            res.send(locationstosend);
-          });
+          res.send(locationstosend);
         }
       });
     }
