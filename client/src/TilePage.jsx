@@ -40,10 +40,10 @@ class TilePage extends React.Component {
         <MapView />
         {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
           return (
-            <div key={object.photos[0]}>
+            <div key={object.coverPhoto}>
               {console.log(object)}
               <div id="columns">
-                <TileThumb key={object.photos[0]} locationSelect={this.locationSelect.bind(this)} photo={object.photos[0]} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
+                <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
               </div>
             </div>
           );
