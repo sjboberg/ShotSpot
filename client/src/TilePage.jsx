@@ -35,7 +35,7 @@ class TilePage extends React.Component {
 
   render() {
     if(this.state.locSelect !== 'tileSearch') {
-      return <Redirect push to={{pathname: '/IndivComponent', state: {locSelect: this.state.locSelect}}} />;
+      return <Redirect push to={{pathname: '/IndivComponent/'+ this.state.locSelect, state: {locSelect: this.state.locSelect}}} />;
     }
     return (
     <div className="container" id="tile">
