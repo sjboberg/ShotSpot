@@ -32,7 +32,7 @@ class Main extends React.Component {
 
   render() {
     if (this.state.submitted) {
-      return <Redirect push to="/TilePage" />;
+      return <Redirect push to={{pathname: '/TilePage', state: {Latitude: this.state.Latitude, Longitude: this.state.Longitude}}} />;
     }
     return (
       <div className="container" id="home">
