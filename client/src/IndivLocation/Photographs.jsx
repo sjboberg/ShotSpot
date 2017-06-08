@@ -15,10 +15,10 @@ class Photographs extends React.Component {
         <h3 className = "photographText"> Photographs </h3>
           <div className="image_grid">
            <Carousel slidesToShow={3} decorators={Carousel.getDefaultProps().decorators.slice(0, 2)}>
-            {(this.props.photos) ? this.props.photos.map((photo) => {
+            {(this.props.photos) ? this.props.photos.map((photo, i) => {
              return (
-              <div key={photo.uri} className="centerIndiv">
-                <img key={photo.uri} src = {photo.uri} />
+              <div key={i} className="centerIndiv">
+                <img key={i} src = {photo.uri} />
               </div>
           );
         }) : console.log('There are no photos yet to display for this location.')}

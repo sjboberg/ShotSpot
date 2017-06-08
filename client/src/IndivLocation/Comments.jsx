@@ -11,9 +11,9 @@ class Comments extends React.Component {
     return (
       <div>
         <h3 className="commentText"> Comment Section: </h3>
-        {(this.props.comments) ? this.props.comments.map((comments) => {
+        {(this.props.comments) ? this.props.comments.map((comments, i) => {
           return (
-            <div>
+            <div key={i}>
               <h3 className="commentText"> Username: {comments.username} </h3>
               <h3 className="commentText"> {comments.content}</h3>
             </div>
