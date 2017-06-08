@@ -46,7 +46,10 @@ module.exports = {
     post: function(req, res) {
       let radiustoSearch = 25; //Miles
       console.log('This should be the latitude: ', req.body);
-      let locationstosend = [];
+      let locationstosend = {
+        locations: [],
+        searchCoordinates: [req.body.latitude, req.body.longitude]
+      };
       dbHelpers.getLocationsAndCoverPhotos((err, result) => {
         if (err) {
           console.log('There is an error in the controller on getLocationsAndCoverPhotos: ', err);
@@ -67,9 +70,10 @@ module.exports = {
               content.name = location.name;
               content.coverPhoto.push(location.uri);
               content.coordinates = {latitude: splitcoords[0], longitude: splitcoords[1]};
-              locationstosend.push(content);
+              locationstosend.locations.push(content);
             }
           });
+          console.log(locationstosend);
           res.send(locationstosend);
         }
       });
