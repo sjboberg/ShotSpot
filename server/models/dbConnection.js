@@ -1,5 +1,5 @@
 const pg = require('pg');
-
+// const secvars = require('../../secretherokudev.js');
 
 var config = {
   user: process.env.USER || 'postgres',

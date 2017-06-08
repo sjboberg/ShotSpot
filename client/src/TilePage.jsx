@@ -10,12 +10,12 @@ import MapView from './MapView.jsx';
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading'], locSelect: 'tileSearch'};
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', };
   }
 
   componentWillMount() {
-
-    var coordinates = {latitude: this.props.latitude, longitude: this.props.longitude};
+    console.log('This is the prop from the tilepage: ', this.props.location.state.Latitude, this.props.location.state.Longitude)
+    var coordinates = {latitude: this.props.location.state.Latitude, longitude: this.props.location.state.Longitude};
     axios({
       url: '/tilePage/getPhotosInRange',
       method: 'post',

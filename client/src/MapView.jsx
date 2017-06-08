@@ -5,6 +5,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 export class MapView extends React.Component {
   constructor(props) {
     super(props);
+    
   }
   render() {
     
