@@ -21,7 +21,10 @@ class TilePage extends React.Component {
       method: 'post',
       data: coordinates
     }).then((results) => {
-      this.setState({objects: results.data});
+      this.setState({
+        objects: results.data.locations,
+        searchCoordinates: results.data.searchCoordinates
+      });
       console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
@@ -37,7 +40,7 @@ class TilePage extends React.Component {
     if (this.state.locSelect === 'tileSearch') {
       return (
       <div className="container" id="tile">
-        <MapView />
+        <MapView searchCoordinates={this.state.searchCoordinates}/>
         {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
           return (
             <div key={object.coverPhoto}>
