@@ -34,9 +34,8 @@ ReactDOM.render(
 <Router>
   <div>
     <Route exact path="/" component={Index} />
-    <Route path="/TilePage" component={TilePage} />
-      <Route path="/TilePage:name" component={TilePage} />
-      <Route path="/IndivComponent/:id" component={IndivComponent} />
+    <Route path="/TilePage/:id" component={TilePage} />
+    <Route path="/IndivComponent/:id" component={IndivComponent} />
     <Route path="/ImageUpload" component={ImageUpload} />
   </div>
 </Router>
