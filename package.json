@@ -31,6 +31,7 @@
     "nuka-carousel": "^2.0.4",
     "path": "^0.12.7",
     "pg": "^6.2.3",
+    "query-string": "^4.3.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-google-maps": "^6.3.0",

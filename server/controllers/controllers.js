@@ -22,8 +22,6 @@ module.exports = {
         coordinates['Latitude'] = result[0].latitude;
         coordinates['Longitude'] = result[0].longitude;
         coordinates['Search'] = true;
-        console.log('These are the coordinates: ', coordinates);
-        console.log('This is the search bar result from the controller: ', req.body);
         res.send(coordinates);
       });
     }
@@ -45,7 +43,6 @@ module.exports = {
     },
     post: function(req, res) {
       let radiustoSearch = 25; //Miles
-      console.log('This should be the latitude: ', req.body);
       let locationstosend = {
         locations: [],
         searchCoordinates: [req.body.latitude, req.body.longitude]

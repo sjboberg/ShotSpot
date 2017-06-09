@@ -4,6 +4,7 @@ import TileThumb from './TileComponents/TileThumb.jsx';
 import IndivComponent from './IndivComponent.jsx';
 import MapView from './MapView.jsx';
 import { Redirect } from 'react-router';
+const queryString = require('query-string');
 
 class TilePage extends React.Component {
   constructor(props) {
@@ -12,12 +13,15 @@ class TilePage extends React.Component {
   }
 
   componentWillMount() {
-    console.log('This is the prop from the tilepage: ', this.props.location.state.Latitude, this.props.location.state.Longitude)
-    var coordinates = {latitude: this.props.location.state.Latitude, longitude: this.props.location.state.Longitude};
+    let url = this.props.match.params.id;
+    let parsed = queryString.parse(url);
+    parsed.latitude = parseFloat(parsed.latitude);
+    parsed.longitude = parseFloat(parsed.longitude);
+    // var coordinates = {latitude: this.props.location.state.Latitude, longitude: this.props.location.state.Longitude};
     axios({
       url: '/tilePage/getPhotosInRange',
       method: 'post',
-      data: coordinates
+      data: parsed
     }).then((results) => {
       this.setState({
         objects: results.data.locations,

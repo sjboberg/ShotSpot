@@ -3,6 +3,7 @@ import axios from 'axios';
 import SearchComponent from './SearchComponent.jsx';
 import TilePage from './TilePage.jsx';
 import { Redirect } from 'react-router';
+const queryString = require('query-string');
 
 class Main extends React.Component {
   constructor(props) {
@@ -32,7 +33,9 @@ class Main extends React.Component {
 
   render() {
     if (this.state.submitted) {
-      return <Redirect push to={{pathname: '/TilePage/' + 'Lat='+this.state.Latitude+'Long='+this.state.Longitude, state: {Latitude: this.state.Latitude, Longitude: this.state.Longitude}}} />;
+      let coordinates = {latitude: this.state.Latitude, longitude: this.state.Longitude}
+      const stringified = queryString.stringify(coordinates);
+      return <Redirect push to={{pathname: '/TilePage/' + stringified, state: {Latitude: this.state.Latitude, Longitude: this.state.Longitude}}} />;
     }
     return (
       <div className="container" id="home">
