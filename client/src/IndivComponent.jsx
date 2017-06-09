@@ -11,10 +11,11 @@ class IndivComponent extends React.Component {
   }
 
   componentWillMount() {
+    let location = this.props.match.params.id;
     axios({
       url: '/locationPage/getContent',
       method: 'post',
-      data: {locationId: this.props.location.state.locSelect}
+      data: {locationId: location}
     }).then((results) => {
       this.setState({location: results.data});
       console.log('This is the result from the IndivComponent page: ', results);
