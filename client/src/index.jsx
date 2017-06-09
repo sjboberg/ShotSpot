@@ -5,6 +5,7 @@ import _ from 'lodash';
 import Main from './Main.jsx';
 import TilePage from './TilePage.jsx';
 import ImageUpload from './ImageUpload.jsx';
+import IndivComponent from './IndivComponent.jsx'
 import { BrowserRouter as Router,
          Route,
          Link
@@ -33,7 +34,8 @@ ReactDOM.render(
 <Router>
   <div>
     <Route exact path="/" component={Index} />
-    <Route path="/TilePage" component={TilePage} />
+    <Route path="/TilePage/:id" component={TilePage} />
+    <Route path="/IndivComponent/:id" component={IndivComponent} />
     <Route path="/ImageUpload" component={ImageUpload} />
   </div>
 </Router>
