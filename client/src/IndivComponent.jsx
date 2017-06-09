@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Comments from './IndivLocation/Comments.jsx';
+import Navigation from './Navigation.jsx';
 import Photographs from './IndivLocation/Photographs.jsx';
 import { Redirect } from 'react-router';
 
@@ -27,6 +28,7 @@ class IndivComponent extends React.Component {
   render() {
     return (
       <div id="columns">
+        <Navigation />
         <Photographs name= {this.state.location.name} photos={this.state.location.photos}/>
         <Comments name={this.state.location.name} comments={this.state.location.comments}/>
       </div>
