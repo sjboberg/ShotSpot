@@ -3,6 +3,7 @@ import axios from 'axios';
 import TileThumb from './TileComponents/TileThumb.jsx';
 import IndivComponent from './IndivComponent.jsx';
 import MapView from './MapView.jsx';
+import Navigation from './Navigation.jsx';
 import { Redirect } from 'react-router';
 const queryString = require('query-string');
 
@@ -17,7 +18,6 @@ class TilePage extends React.Component {
     let parsed = queryString.parse(url);
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);
-    // var coordinates = {latitude: this.props.location.state.Latitude, longitude: this.props.location.state.Longitude};
     axios({
       url: '/tilePage/getPhotosInRange',
       method: 'post',
@@ -44,6 +44,7 @@ class TilePage extends React.Component {
     return (
     <div className="container" id="tile">
       <MapView searchCoordinates={this.state.searchCoordinates}/>
+      <Navigation />
       {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
         return (
           <div key={object.coverPhoto}>

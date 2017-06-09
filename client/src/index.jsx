@@ -5,6 +5,8 @@ import _ from 'lodash';
 import Main from './Main.jsx';
 import TilePage from './TilePage.jsx';
 import ImageUpload from './ImageUpload.jsx';
+import SignIn from './SignIn.jsx';
+import Login from './Login.jsx';
 import IndivComponent from './IndivComponent.jsx'
 import { BrowserRouter as Router,
          Route,
@@ -37,6 +39,8 @@ ReactDOM.render(
     <Route path="/TilePage/:id" component={TilePage} />
     <Route path="/IndivComponent/:id" component={IndivComponent} />
     <Route path="/ImageUpload" component={ImageUpload} />
+    <Route path="/SignIn" component={SignIn} />
+    <Route path="/Login" component={Login} />
   </div>
 </Router>
 , document.getElementById('app'));
