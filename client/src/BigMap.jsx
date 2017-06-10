@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
-class BigMap extends React.Component{
+class BigMap extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const position = [51.505, -0.09];
+    const position = [this.props.location.state.Latitude, this.props.location.state.Longitude];
     return (
       <div>
         <Map
@@ -18,14 +18,18 @@ class BigMap extends React.Component{
           <TileLayer
             url="https://api.mapbox.com/styles/v1/fabbous/cj3gnpyq200112rtiabmb608s/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmFiYm91cyIsImEiOiJjajNnbmlmNmQwMDRlMnFxc3Nwdms0dGV1In0.3IAYFLfwY1Z_eh1OxEognA"
             attribution="<attribution>" />
-            <Marker position={position}>
-            {/*<Popup>
-              <span>Hi Everyone <br /> This is map of SF.</span>
-            </Popup>*/}
-            </Marker>
+            {this.props.location.state.objects.map((location, i) => {
+              return (
+                <div key={i}>
+                  <Marker position={[location.coordinates.latitude, location.coordinates.longitude]}>
+                    <span>{location.category}</span>
+                  </Marker>
+                </div>
+              );
+            })}
         </Map>
       </div>
-    )
+    );
   }
 }
 
