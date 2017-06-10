@@ -33,9 +33,9 @@ class Main extends React.Component {
 
   render() {
     if (this.state.submitted) {
-      let coordinates = {latitude: this.state.Latitude, longitude: this.state.Longitude}
+      let coordinates = {latitude: this.state.Latitude, longitude: this.state.Longitude};
       const stringified = queryString.stringify(coordinates);
-      return <Redirect push to={{pathname: '/TilePage/' + stringified, state: {Latitude: this.state.Latitude, Longitude: this.state.Longitude}}} />;
+      return <Redirect push to={{pathname: '/TilePage/' + stringified, state: {Latitude: this.state.Latitude, Longitude: this.state.Longitude, stringy: stringified}}} />;
     }
     return (
       <div className="container" id="home">
