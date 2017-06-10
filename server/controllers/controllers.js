@@ -72,7 +72,6 @@ module.exports = {
               locationstosend.locations.push(content);
             }
           });
-          console.log(locationstosend);
           res.send(locationstosend);
         }
       });
