@@ -1,10 +1,10 @@
-INSERT INTO locations (name, coordinates) VALUES 
-('mountains', '37.782956, -122.409465'),
-('lavender field', '37.780195, -122.447158'),
-('dock', '37.710318, -122.494732'),
-('street art 1', '38.320745, -122.295253'),
-('street art 2', '37.905197, -122.565637'),
-('streets', '37.794757, -122.460072');
+INSERT INTO locations (name, coordinates, category_id) VALUES 
+('mountains', '37.782956, -122.409465', 4),
+('lavender field', '37.780195, -122.447158', 4),
+('dock', '37.710318, -122.494732', 4),
+('street art 1', '38.320745, -122.295253', 1),
+('street art 2', '37.905197, -122.565637', 1),
+('streets', '37.794757, -122.460072', 5);
 
 INSERT INTO users (username) VALUES 
 ('sebastian'),

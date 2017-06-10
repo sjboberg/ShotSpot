@@ -1,4 +1,17 @@
 -- ---
+-- Table 'categories'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS categories CASCADE;
+
+CREATE TABLE categories (
+  id SERIAL NOT NULL,
+  name VARCHAR(40),
+  PRIMARY KEY (id)
+);
+
+-- ---
 -- Table 'locations'
 -- 
 -- ---
@@ -8,6 +21,7 @@ DROP TABLE IF EXISTS locations CASCADE;
 CREATE TABLE locations (
   id BIGSERIAL NOT NULL,
   name VARCHAR(40),
+  category_id INTEGER,
   coordinates VARCHAR,
   cover_photo_id BIGINT DEFAULT 0,
   like_count INTEGER DEFAULT 0,
@@ -104,3 +118,12 @@ CREATE TABLE landing_images (
 );
 
 INSERT INTO photos (id, uri) VALUES (0, 'https://c1.staticflickr.com/5/4208/35000849792_1f62b924ba.jpg');
+
+INSERT INTO categories (name) VALUES 
+('Street Art'), 
+('Astrophotography'), 
+('Architecture'), 
+('Landscape'), 
+('Cityscape'), 
+('Tourist'), 
+('Nature');
