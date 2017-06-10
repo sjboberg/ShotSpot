@@ -81,7 +81,6 @@ module.exports = {
   // Should refactor this to use promises to avoid the cb pyramid
   getLocationContent: {
     post: (req, res) => {
-      console.log(req.body, 'this is the req.body for getlocationcontent');
       var content = {
         id: '',
         name: '',
