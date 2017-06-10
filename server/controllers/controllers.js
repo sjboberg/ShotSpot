@@ -1,6 +1,6 @@
 require('dotenv').config()
 var flick = require('../models/flickr/upload.js');
-var models = require('../models/models.js');
+// var models = require('../models/models.js');
 var dbHelpers = require('../models/dbHelpers.js');
 var NodeGeocoder = require('node-geocoder');
 var distance = require('gps-distance');
