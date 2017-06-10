@@ -10,8 +10,6 @@ var flickrOptions = {
   access_token_secret: process.env.FLICKR_ACCESS_TOKEN_SECRET
 };
 
-console.log(JSON.stringify(flickrOptions));
-
 var getPhotoUrl = function(photoId, cb) {
   var endpoint = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=' + flickrOptions.api_key + '&photo_id=' + photoId +'&format=json&nojsoncallback=1';
   request(endpoint, function (err, response, body) {
