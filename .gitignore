@@ -4,7 +4,7 @@ public/bundle.js.map
 public/.DS_Store
 .env
 googmaptest.js
-apiKeys.js
+.env
 secretherokudev.js
 package-lock.json
 data/flickr
