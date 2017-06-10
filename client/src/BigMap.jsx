@@ -22,7 +22,9 @@ class BigMap extends React.Component {
               return (
                 <div key={i}>
                   <Marker position={[location.coordinates.latitude, location.coordinates.longitude]}>
-                    <span>{location.category}</span>
+                    <Popup>
+                      <span>{location.category}</span>
+                    </Popup>
                   </Marker>
                 </div>
               );
