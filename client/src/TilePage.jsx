@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import TileThumb from './TileComponents/TileThumb.jsx';
 import IndivComponent from './IndivComponent.jsx';
+import BigMap from './BigMap.jsx';
 import MapView from './MapView.jsx';
 import Navigation from './Navigation.jsx';
 import { Redirect } from 'react-router';
@@ -10,12 +11,18 @@ const queryString = require('query-string');
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading'], locSelect: 'tileSearch'};
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: ''};
+  }
+
+  handleMapClick() {
+    console.log('Tests');
+    return <Redirect push to='/BigMap/' />
   }
 
   componentWillMount() {
     let url = this.props.match.params.id;
     let parsed = queryString.parse(url);
+    let stringyurl = queryString.stringify(url);
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);
     axios({
@@ -25,7 +32,8 @@ class TilePage extends React.Component {
     }).then((results) => {
       this.setState({
         objects: results.data.locations,
-        searchCoordinates: results.data.searchCoordinates
+        searchCoordinates: results.data.searchCoordinates,
+        url: stringyurl
       });
       console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
@@ -44,6 +52,7 @@ class TilePage extends React.Component {
     return (
     <div className="container" id="tile">
       <MapView searchCoordinates={this.state.searchCoordinates}/>
+      <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
       <Navigation />
       {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
         return (
