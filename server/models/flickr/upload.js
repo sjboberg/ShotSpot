@@ -1,14 +1,13 @@
 var Flickr = require("flickrapi");
-var apiKeys = require('../../../apiKeys.js');
 var request = require('request');
 
 var flickrOptions = {
-  api_key: process.env.FLICKR_API_KEY || apiKeys.flickr.apiKey,
-  secret: process.env.FLICKR_API_SECRET || apiKeys.flickr.secret,
+  api_key: process.env.FLICKR_API_KEY,
+  secret: process.env.FLICKR_API_SECRET,
   permissions: "delete",
-  user_id: process.env.FLICKR_USER_ID || apiKeys.flickr.userId,
-  access_token: process.env.FLICKR_ACCESS_TOKEN || apiKeys.flickr.accessToken,
-  access_token_secret: process.env.FLICKR_ACCESS_TOKEN_SECRET || apiKeys.flickr.accessTokenSecret
+  user_id: process.env.FLICKR_USER_ID,
+  access_token: process.env.FLICKR_ACCESS_TOKEN,
+  access_token_secret: process.env.FLICKR_ACCESS_TOKEN_SECRET
 };
 
 var getPhotoUrl = function(photoId, cb) {
