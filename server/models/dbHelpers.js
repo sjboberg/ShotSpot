@@ -100,9 +100,10 @@ exports.getLocationInfo = (locationId, cb) => {
 };
 
 exports.getLocationsAndCoverPhotos = (cb) => {
-  var query = 'SELECT locations.id AS id, locations.name AS name, locations.coordinates AS coordinates, uri \
-  FROM locations, photos \
-  WHERE locations.cover_photo_id = photos.id;';
+  var query = 'SELECT categories.name AS category, locations.id AS id, locations.name AS name, locations.coordinates AS coordinates, uri \
+  FROM locations, photos, categories \
+  WHERE locations.cover_photo_id = photos.id \
+  AND locations.category_id = categories.id;';
   pool.query(query, function(err, result) {
     if (err) {
       cb(err, null);

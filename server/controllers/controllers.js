@@ -55,6 +55,7 @@ module.exports = {
             let content = {
               id: '',
               name: '',
+              category: '',
               coordinates: '',
               coverPhoto: [],
               comments: []
@@ -65,6 +66,7 @@ module.exports = {
             if (milediff < radiustoSearch) {
               content.id = location.id;
               content.name = location.name;
+              content.category = location.category;
               content.coverPhoto.push(location.uri);
               content.coordinates = {latitude: splitcoords[0], longitude: splitcoords[1]};
               locationstosend.locations.push(content);
