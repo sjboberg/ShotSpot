@@ -4,7 +4,7 @@ var path = require('path');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var router = require('./router/router.js');
-var models = require('./models/models.js');
+// var models = require('./models/models.js');
 var fileUpload = require('express-fileupload');
 
 
