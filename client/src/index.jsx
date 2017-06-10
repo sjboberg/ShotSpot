@@ -8,6 +8,7 @@ import ImageUpload from './ImageUpload.jsx';
 import SignIn from './SignIn.jsx';
 import Login from './Login.jsx';
 import IndivComponent from './IndivComponent.jsx'
+import BigMap from './BigMap.jsx';
 import { BrowserRouter as Router,
          Route,
          Link
@@ -41,6 +42,7 @@ ReactDOM.render(
     <Route path="/ImageUpload" component={ImageUpload} />
     <Route path="/SignIn" component={SignIn} />
     <Route path="/Login" component={Login} />
+    <Route path="/BigMap/:id" component={BigMap} />
   </div>
 </Router>
 , document.getElementById('app'));
