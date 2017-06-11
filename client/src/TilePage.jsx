@@ -22,7 +22,7 @@ var style= {
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: ''};
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'View All Categories'};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
   }
 
@@ -104,6 +104,5 @@ class TilePage extends React.Component {
     }
   }
 }
-
 
 export default TilePage;

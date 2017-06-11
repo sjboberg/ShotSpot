@@ -7,11 +7,10 @@ class Filter extends React.Component {
 
   render() {
     let locNames = {};
+    locNames['View All Categories'] = 'default';
     (this.props.coordObjs.length > 1) ? this.props.coordObjs.forEach((value, i) => {
       locNames[value.category] = i;
     }) : console.log('Waiting to get data');
-
-    console.log('These are the location names: ', locNames);
     return (
       <div className="filter">
         <select value={this.props.initVal} onChange={this.props.handleChangeFilter}>
