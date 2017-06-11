@@ -7,6 +7,7 @@ import MapView from './MapView.jsx';
 import Navigation from './Navigation.jsx';
 import Filter from './Filter.jsx';
 import { Redirect } from 'react-router';
+<<<<<<< HEAD
 const queryString = require('query-string');
 import Masonry from 'react-masonry-component';
 import MasonryInfiniteScroller from 'react-masonry-infinite';
@@ -18,6 +19,9 @@ var masonryOptions = {
 var style= {
   paddingLeft: "100px"
 }
+=======
+import queryString from 'query-string';
+>>>>>>> "fixed import and require"
 
 class TilePage extends React.Component {
   constructor(props) {
