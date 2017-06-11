@@ -38,7 +38,7 @@ ReactDOM.render(
   <div>
     <Route exact path="/" component={Index} />
     <Route path="/TilePage/:id" component={TilePage} />
-    <Route path="/IndivComponent/:id" component={IndivComponent} />
+    <Route path="/Location/:id" component={IndivComponent} />
     <Route path="/ImageUpload" component={ImageUpload} />
     <Route path="/SignIn" component={SignIn} />
     <Route path="/Login" component={Login} />
