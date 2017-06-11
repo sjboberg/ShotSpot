@@ -66,11 +66,18 @@ class TilePage extends React.Component {
   }
 
   filterFun(value) {
-    return value.category === this.state.value; 
+    if (this.state.value !== 'View All Categories') {
+      return value.category === this.state.value; 
+    } else {
+      return value.category;
+    }
   }
 
   render() {
     let tempObjects = this.state.objects.filter(this.filterFun);
+    // if (this.state.value === 'View All Categories') {
+    //   tempObjects = this.state.objects;
+    // }
     console.log(tempObjects);
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + this.props.location.state.stringy, state: {objects: this.state.objects, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
