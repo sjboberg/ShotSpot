@@ -7,7 +7,7 @@ import queryString from 'query-string';
 class BigMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading'], searchCoordinates: '', url: ''};
+    this.state = {objects: ['...Loading'], searchCoordinates: '', url: '', filteredObjects: ''};
   }
 
   componentWillMount() {
@@ -24,7 +24,8 @@ class BigMap extends React.Component {
       this.setState({
         objects: results.data.locations,
         searchCoordinates: results.data.searchCoordinates,
-        url: stringyurl
+        url: stringyurl,
+        filteredObjects: this.props.location.state.filteredObjects || results.data.locations || ['... Still loading']
       });
       console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
@@ -39,8 +40,12 @@ class BigMap extends React.Component {
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);
     const position = [parsed.latitude, parsed.longitude];
-    console.log("This is the position coordinates in BigMap: ", position);
-    const objects = this.state.objects || this.props.location.state.objects
+    console.log('This is the position coordinates in BigMap: ', position);
+    let objects = this.state.filteredObjects || this.state.objects || this.props.location.state.objects;
+    console.log('This is the objects variable in bigmap: ', objects);
+    // if (this.props.location.state.filteredObjectes) {
+    //   objects = this.props.location.state.filteredObjects;
+    // }
     return (
       <div>
         <Map
@@ -51,7 +56,7 @@ class BigMap extends React.Component {
             url="https://api.mapbox.com/styles/v1/fabbous/cj3gnpyq200112rtiabmb608s/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmFiYm91cyIsImEiOiJjajNnbmlmNmQwMDRlMnFxc3Nwdms0dGV1In0.3IAYFLfwY1Z_eh1OxEognA"
             attribution="<attribution>" />
             {(this.state.objects[0] !== '...Loading') ? objects.map((location, i) => {
-              console.log("these are locations from inside the marker map");
+              console.log('these are locations from inside the marker map');
               return (
                 <div key={i}>
                   <Marker position={[location.coordinates.latitude, location.coordinates.longitude]}>
