@@ -54,7 +54,7 @@ class BigMap extends React.Component {
     const position = [parsed.latitude, parsed.longitude];
     let filterInitVal = parsed.filter || this.props.objects;
     let objects = (this.props.location.state) ? this.props.location.state.filteredObjects : this.state.objects;
-    let initialValue = (this.props.location.state) ? this.props.location.state.currentFilter : 'View All Categories'
+    let initialValue = (this.props.location.state) ? this.props.location.state.currentFilter : 'View All Categories';
 
     return (
       <div>
