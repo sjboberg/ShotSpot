@@ -26,8 +26,9 @@ import queryString from 'query-string';
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'View All Categories'};
+    this.state = {objects: [{default: 'default'}], locSelect: 'tileSearch', url: '', bigMap: false, value: 'View All Categories'};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
+    this.filterFun = this.filterFun.bind(this);
   }
 
   handleMapClick() {
@@ -64,7 +65,13 @@ class TilePage extends React.Component {
     this.setState({value: event.target.value});
   }
 
+  filterFun(value) {
+    return value.category === this.state.value; 
+  }
+
   render() {
+    let tempObjects = this.state.objects.filter(this.filterFun);
+    console.log(tempObjects);
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + this.props.location.state.stringy, state: {objects: this.state.objects, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
     } else if (this.state.locSelect !== 'tileSearch') {
