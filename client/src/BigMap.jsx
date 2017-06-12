@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import Filter from './Filter.jsx';
 import queryString from 'query-string';
 
 class BigMap extends React.Component {
@@ -28,6 +29,20 @@ class BigMap extends React.Component {
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
     });
+
+    this.handleChangeFilter = this.handleChangeFilter.bind(this);
+  }
+
+  handleChangeFilter(event) {
+    this.setState({value: event.target.value});
+  }
+
+  filterFun(value) {
+    if (this.state.value !== 'View All Categories') {
+      return value.category === this.state.value; 
+    } else {
+      return value.category;
+    }
   }
 
   render() {
@@ -38,16 +53,12 @@ class BigMap extends React.Component {
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);
     const position = [parsed.latitude, parsed.longitude];
-    // if (!this.state.filteredObjects) {
-    //   filteredAlt = this.state.objects;
-    // }
     let objects = (this.props.location.state) ? this.props.location.state.filteredObjects : this.state.objects;
     console.log('This is the objects variable in bigmap: ', objects);
-    // if (this.props.location.state.filteredObjectes) {
-    //   objects = this.props.location.state.filteredObjects;
-    // }
+
     return (
       <div>
+        <Filter coordObjs={this.state.objects} initValue={this.props.location.state.currentFilter} handleChangeFilter={this.handleChangeFilter} />
         <Map
           style={{height: '100vh'}}
           center={position}

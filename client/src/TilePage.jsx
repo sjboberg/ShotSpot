@@ -77,7 +77,7 @@ class TilePage extends React.Component {
     let tempObjects = this.state.objects.filter(this.filterFun);
     console.log(tempObjects);
     if (this.state.bigMap) {
-      return <Redirect push to={{pathname: '/BigMap/' + this.props.location.state.stringy, state: {objects: this.state.objects, filteredObjects: tempObjects, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
+      return <Redirect push to={{pathname: '/BigMap/' + this.props.location.state.stringy, state: {objects: this.state.objects, filteredObjects: tempObjects, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude, currentFilter: this.state.value}}} />;
     } else if (this.state.locSelect !== 'tileSearch') {
       return <Redirect push to={{pathname: '/Location/' + this.state.locSelect + '/' + this.props.location.state.stringy, state: {locSelect: this.state.locSelect, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
     } else {
@@ -99,7 +99,7 @@ class TilePage extends React.Component {
           >
 =======
           <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
-          <Filter coordObjs={this.state.objects} initVal={this.state.value} handleChangeFilter={this.handleChangeFilter}/>
+          <Filter coordObjs={this.state.objects} initVal={this.state.value} handleChangeFilter={this.handleChangeFilter} />
           <Navigation />
 <<<<<<< HEAD
 >>>>>>> "filter now passes selection to tilemap state"
