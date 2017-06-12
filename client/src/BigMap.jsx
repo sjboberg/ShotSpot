@@ -44,10 +44,6 @@ class BigMap extends React.Component {
     }
   }
 
-  componentWillMount() {
-
-  }
-
   render() {
     let url = this.props.match.params.id;
     let parsed = queryString.parse(url);
