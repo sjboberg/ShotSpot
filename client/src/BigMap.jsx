@@ -56,7 +56,7 @@ class BigMap extends React.Component {
                 <div key={i}>
                   <Marker position={[location.coordinates.latitude, location.coordinates.longitude]}>
                     <Popup>
-                      <span>{location.name}</span>
+                      <span><img src={location.coverPhoto} /> <hr/> {location.name}</span>
                     </Popup>
                   </Marker>
                 </div>

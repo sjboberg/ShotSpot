@@ -48,7 +48,7 @@ class TilePage extends React.Component {
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + this.props.location.state.stringy, state: {objects: this.state.objects, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
     } else if (this.state.locSelect !== 'tileSearch') {
-      return <Redirect push to={{pathname: '/IndivComponent/' + this.state.locSelect, state: {locSelect: this.state.locSelect}}} />;
+      return <Redirect push to={{pathname: '/Location/' + this.state.locSelect + '/' + this.props.location.state.stringy, state: {locSelect: this.state.locSelect, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
     } else {
       return (
         <div className="container" id="tile">

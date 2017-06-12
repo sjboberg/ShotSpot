@@ -3,6 +3,7 @@ import axios from 'axios';
 import Comments from './IndivLocation/Comments.jsx';
 import Navigation from './Navigation.jsx';
 import Photographs from './IndivLocation/Photographs.jsx';
+import MapView from './MapView.jsx';
 import { Redirect } from 'react-router';
 
 class IndivComponent extends React.Component {
@@ -26,8 +27,10 @@ class IndivComponent extends React.Component {
   }
 
   render() {
+    // let mapPosition = [this.props.location.state.Latitude, this.props.location.state.Longitude];
     return (
       <div id="columns">
+        <MapView />
         <Navigation />
         <Photographs name= {this.state.location.name} photos={this.state.location.photos}/>
         <Comments name={this.state.location.name} comments={this.state.location.comments}/>
