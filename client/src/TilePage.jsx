@@ -38,6 +38,7 @@ class TilePage extends React.Component {
   componentWillMount() {
     let url = this.props.match.params.id;
     let parsed = queryString.parse(url);
+    console.log('this is the parsed result in tilepage: ', parsed);
     let stringyurl = queryString.stringify(url);
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);

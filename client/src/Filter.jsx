@@ -13,7 +13,7 @@ class Filter extends React.Component {
     }) : console.log('Waiting to get data');
     return (
       <div className="filter">
-        <select value={this.props.initVal} onChange={this.props.handleChangeFilter}>
+        <select value={this.props.initValue} onChange={this.props.handleChangeFilter}>
           {Object.keys(locNames).map((value, i) => { return (this.props.initValue !== value) ? <option key={i} value={value}>{value}</option> : <option key={i} value={value} selected  >{value}</option>})}
         </select>
       </div>

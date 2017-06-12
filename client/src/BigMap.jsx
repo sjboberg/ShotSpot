@@ -55,10 +55,11 @@ class BigMap extends React.Component {
     const position = [parsed.latitude, parsed.longitude];
     let objects = (this.props.location.state) ? this.props.location.state.filteredObjects : this.state.objects;
     console.log('This is the objects variable in bigmap: ', objects);
+    let initialValue = (this.props.location.state) ? this.props.location.state.currentFilter : 'View All Categories'
 
     return (
       <div>
-        <Filter coordObjs={this.state.objects} initValue={this.props.location.state.currentFilter} handleChangeFilter={this.handleChangeFilter} />
+        <Filter coordObjs={this.state.objects} initValue={initialValue} handleChangeFilter={this.handleChangeFilter} />
         <Map
           style={{height: '100vh'}}
           center={position}
