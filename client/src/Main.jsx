@@ -33,9 +33,11 @@ class Main extends React.Component {
 
   render() {
     if (this.state.submitted) {
-      let coordinates = {latitude: this.state.Latitude, longitude: this.state.Longitude, filter: 'View All Categories'};
+      let coordinates = {latitude: this.state.Latitude, longitude: this.state.Longitude};
+      let filterVal = {filter: 'View All Categories'}
       const stringified = queryString.stringify(coordinates);
-      return <Redirect push to={{pathname: '/TilePage/' + stringified, state: {searchedLocation: this.state.searchValue, Latitude: this.state.Latitude, Longitude: this.state.Longitude, stringy: stringified}}} />;
+      const stringfil = queryString.stringify(filterVal);
+      return <Redirect push to={{pathname: '/TilePage/' + stringified, state: {searchedLocation: this.state.searchValue, Latitude: this.state.Latitude, Longitude: this.state.Longitude, stringy: stringified, filter: stringfil}}} />;
     }
     return (
       <div className="container" id="home">
