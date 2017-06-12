@@ -1,7 +1,7 @@
 
 
-#home {
-  background-image: url('./images/mucangchai_front.jpg');
+#banner {
+  background-image: url('./images/mountain_background.jpg');
   background-size: cover;
   background-height: 100%;
   background-width: 100%;
@@ -13,23 +13,24 @@
   height: auto;
   
   /* Set up positioning */
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 20px;
+  padding-left: 20px;
+  color: white;
+  letter-spacing: 3.5px;
+  font-size: 25px;
+  font-weight: bold;
 
 }
-
-
-
-#search {
-  padding-left: 10px;
-}
-
 
 #tile {
   background-color: white;
   position: fixed;
-    background-size: cover;
+  background-size: cover;
   background-height: 100%;
   background-width: 100%;
   min-height: 100%;
@@ -40,67 +41,45 @@
   left: 0;
 }
 
-input {
-  border-radius: 50px;
-  width: 800px;
-  height: 40px;
-  margin: 200px;
-  position: relative;
-  size: 70px;
+
+
+#input {
+  margin: auto;
+  margin-left: 125px;
+  margin-top: 215px;
+  position: absolute;
+}
+
+input[type="text"]{
+height: 40px;
+width: 700px;
+padding-left: 10px;
 }
 
 
 
+#photos {
+  max-height: 100%;
+  max-width: 100%;
 
-#columns {
-    column-width: 300px;
-    column-gap: 5px;
-    width: 20%;
-    max-width: 1100px;
-    float: left;
+}
+#upload {
+  padding-left: 20px;
+  padding-top: 40px;
+  font-size: 20px;
+  color: #b5b7b9;
+  background: #45484f;
+  position: fixed;
+  background-size: cover;
+  background-height: 100%;
+  background-width: 100%;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+
 }
 
-#columns figure {
-  background: #fefefe;
-  border: 2px solid #fcfcfc;
-  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
-  margin: 0 2px 15px;
-  padding: 15px;
-  padding-bottom: 10px;
-  transition: opacity .4s ease-in-out;
-  display: inline-block;
-  column-break-inside: avoid;
-}
-
-#columns figure img {
-  width: 100%; height: auto;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 15px;
-  margin-bottom: 5px;
-}
-
-#columns figure figcaption {
-  font-size: .9rem;
-  color: #444;
-  line-height: 1.5;
-}
-
-#columns small { 
-  font-size: 1rem;
-  float: right; 
-  text-transform: uppercase;
-  color: #aaa;
-} 
-
-#columns small a { 
-  color: #666; 
-  text-decoration: none; 
-  transition: .4s color;
-}
-
-#columns:hover figure:not(:hover) {
-  opacity: 0.4;
-}
 
 .photographText {
   color:black;
@@ -109,27 +88,6 @@ input {
   color:black;
 }
 
-.image_grid {
-    width: 700px;
-    margin-bottom: $large-spacing;
-}
-
-.image_grid img {
-    width: 200px;
-    height: 150px;
-    margin-top: $small-spacing;
-    margin-right: $small-spacing;
-}
-
-.image_grid img:last-of-type {
-    margin-right: 0;
-}
-
-
-@media screen and (max-width: 750px) { 
-  #columns { column-gap: 0px; }
-  #columns figure { width: 100%; }
-}
 
 .NavBar {
   display: flex;

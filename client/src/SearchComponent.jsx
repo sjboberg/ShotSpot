@@ -6,14 +6,16 @@ class SearchComponent extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <form className="searchbar" onSubmit={this.props.submission} onChange={this.props.changes}>
-          <input ref="search" type="search" id="search" name="searchbar" placeholder= " Search for Locations..." />
+   return (
+      <div id="input" >
+        <form onSubmit={this.props.submission} onChange={this.props.changes} className="ui icon input">
+          <i className="inverted circular search link icon"></i>
+          <input ref="search" type="text" id="button" placeholder= " Search for Locations..." />
         </form>
-      </div>
+        </div>
     );
-  }
+ }
 }
+
 
 export default SearchComponent;
