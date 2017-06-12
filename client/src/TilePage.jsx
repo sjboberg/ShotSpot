@@ -38,7 +38,6 @@ class TilePage extends React.Component {
   componentWillMount() {
     let url = this.props.match.params.id;
     let parsed = queryString.parse(url);
-    console.log('this is the parsed result in tilepage: ', parsed);
     let stringyurl = queryString.stringify(url);
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);
@@ -83,6 +82,8 @@ class TilePage extends React.Component {
     parsed.longitude = parseFloat(parsed.longitude);
     let Lat = (this.props.location.state) ? this.props.location.state.Latitude : parsed.latitude
     let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude
+    let filterInitVal = parsed.filter || this.state.value;
+    console.log('this is the parsed result in tilepage: ', parsed)
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + urlbigmap, state: {objects: this.state.objects, filteredObjects: tempObjects, Latitude: Lat, Longitude: Lon, currentFilter: this.state.value}}} />;
     } else if (this.state.locSelect !== 'tileSearch') {
@@ -106,7 +107,7 @@ class TilePage extends React.Component {
           >
 =======
           <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
-          <Filter coordObjs={this.state.objects} initVal={this.state.value} handleChangeFilter={this.handleChangeFilter} />
+          <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
           <Navigation />
 <<<<<<< HEAD
 >>>>>>> "filter now passes selection to tilemap state"
