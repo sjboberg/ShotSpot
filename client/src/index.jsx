@@ -9,6 +9,7 @@ import SignIn from './SignIn.jsx';
 import Login from './Login.jsx';
 import IndivComponent from './IndivComponent.jsx'
 import BigMap from './BigMap.jsx';
+import Banner from './Banner.jsx';
 import { BrowserRouter as Router,
          Route,
          Link
@@ -24,6 +25,7 @@ class Index extends React.Component {
   render() {
     return (
       <div>
+        <Banner />
         <Main />
       </div>
     );
