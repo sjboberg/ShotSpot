@@ -8,7 +8,7 @@ import queryString from 'query-string';
 class BigMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false};
+    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false, value: 'View All Categories'};
     let url = this.props.match.params.id;
     let parsed = queryString.parse(url);
     let stringyurl = queryString.stringify(url);
@@ -53,13 +53,14 @@ class BigMap extends React.Component {
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);
     const position = [parsed.latitude, parsed.longitude];
+    let filterInitVal = parsed.filter || this.props.objects;
     let objects = (this.props.location.state) ? this.props.location.state.filteredObjects : this.state.objects;
     console.log('This is the objects variable in bigmap: ', objects);
     let initialValue = (this.props.location.state) ? this.props.location.state.currentFilter : 'View All Categories'
 
     return (
       <div>
-        <Filter coordObjs={this.state.objects} initValue={initialValue} handleChangeFilter={this.handleChangeFilter} />
+        <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
         <Map
           style={{height: '100vh'}}
           center={position}
