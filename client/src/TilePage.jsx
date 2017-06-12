@@ -75,7 +75,7 @@ class TilePage extends React.Component {
 
   render() {
     let tempObjects = this.state.objects.filter(this.filterFun);
-    console.log(this.props.location.state.stringy)
+    // console.log(this.props.location.state.stringy)
     let urlbigmap = (this.props.location.state) ? this.props.location.state.stringy : this.props.match.params.id;
     let url = this.props.match.params.id;
     let parsed = queryString.parse(url);
