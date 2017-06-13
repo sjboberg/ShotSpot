@@ -23,7 +23,6 @@ class Main extends React.Component {
       method: 'post',
       data: {search: this.state.searchValue}
     }).then((results) => {
-      console.log('This is the result from the axios call in Main.jsx: ', results);
       this.setState({Latitude: results.data.Latitude, Longitude: results.data.Longitude, submitted: results.data.Search});
     }).catch((error) => {
       console.log('This is an error from the axios call in Main.jsx: ', error);

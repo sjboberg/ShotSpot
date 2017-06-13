@@ -25,7 +25,6 @@ class BigMap extends React.Component {
         url: stringyurl,
         filteredObjects: (this.props.location.state) ? this.props.location.state.filteredObjects : results.data.locations
       });
-      console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
     });
@@ -55,7 +54,6 @@ class BigMap extends React.Component {
     const position = [parsed.latitude, parsed.longitude];
     let filterInitVal = parsed.filter || this.props.objects;
     let objects = (this.props.location.state) ? this.props.location.state.filteredObjects : this.state.objects;
-    console.log('This is the objects variable in bigmap: ', objects);
     let initialValue = (this.props.location.state) ? this.props.location.state.currentFilter : 'View All Categories'
 
     return (

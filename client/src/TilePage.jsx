@@ -51,7 +51,6 @@ class TilePage extends React.Component {
         searchCoordinates: results.data.searchCoordinates,
         url: stringyurl
       });
-      console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
     });
@@ -75,7 +74,6 @@ class TilePage extends React.Component {
 
   render() {
     let tempObjects = this.state.objects.filter(this.filterFun);
-    // console.log(this.props.location.state.stringy)
     let urlbigmap = (this.props.location.state) ? this.props.location.state.stringy : this.props.match.params.id;
     let url = this.props.match.params.id;
     let parsed = queryString.parse(url);
@@ -85,7 +83,6 @@ class TilePage extends React.Component {
     let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude
     let filterUrlString = (parsed.filter) ? queryString.stringify(parsed.filter) : queryString.stringify({filter: this.state.value});
     let filterInitVal = parsed.filter || this.state.value;
-    console.log('this is the parsed result in tilepage: ', parsed)
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + filterUrlString + '&' + urlbigmap, state: {objects: this.state.objects, filteredObjects: tempObjects, Latitude: Lat, Longitude: Lon, currentFilter: this.state.value}}} />;
     } else if (this.state.locSelect !== 'tileSearch') {
@@ -122,7 +119,6 @@ class TilePage extends React.Component {
           {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
             return (
               <div key={object.coverPhoto}>
-                {console.log(object, ' This is the objects being printed out')}
                 <div id="columns">
 >>>>>>> "The individually filtered locations work, but not all locations"
                   <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
