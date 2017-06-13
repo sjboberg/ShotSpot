@@ -5,8 +5,9 @@ import IndivComponent from './IndivComponent.jsx';
 import BigMap from './BigMap.jsx';
 import MapView from './MapView.jsx';
 import Navigation from './Navigation.jsx';
+import Filter from './Filter.jsx';
 import { Redirect } from 'react-router';
-const queryString = require('query-string');
+import queryString from 'query-string';
 import Masonry from 'react-masonry-component';
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 
@@ -21,7 +22,9 @@ var style= {
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false};
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'View All Categories'};
+    this.handleChangeFilter = this.handleChangeFilter.bind(this);
+    this.filterFun = this.filterFun.bind(this);
   }
 
   handleMapClick() {
@@ -44,7 +47,6 @@ class TilePage extends React.Component {
         searchCoordinates: results.data.searchCoordinates,
         url: stringyurl
       });
-      console.log('This is the result from the getphotosinrange post: ', results);
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
     });
@@ -54,9 +56,31 @@ class TilePage extends React.Component {
     this.setState({locSelect: componentID});
   }
 
+  handleChangeFilter(event) {
+    this.setState({value: event.target.value});
+  }
+
+  filterFun(value) {
+    if (this.state.value !== 'View All Categories') {
+      return value.category === this.state.value; 
+    } else {
+      return value.category;
+    }
+  }
+
   render() {
+    let tempObjects = this.state.objects.filter(this.filterFun);
+    let urlbigmap = (this.props.location.state) ? this.props.location.state.stringy : this.props.match.params.id;
+    let url = this.props.match.params.id;
+    let parsed = queryString.parse(url);
+    parsed.latitude = parseFloat(parsed.latitude);
+    parsed.longitude = parseFloat(parsed.longitude);
+    let Lat = (this.props.location.state) ? this.props.location.state.Latitude : parsed.latitude
+    let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude
+    let filterUrlString = (parsed.filter) ? queryString.stringify(parsed.filter) : queryString.stringify({filter: this.state.value});
+    let filterInitVal = parsed.filter || this.state.value;
     if (this.state.bigMap) {
-      return <Redirect push to={{pathname: '/BigMap/' + this.props.location.state.stringy, state: {objects: this.state.objects, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
+      return <Redirect push to={{pathname: '/BigMap/' + filterUrlString + '&' + urlbigmap, state: {objects: this.state.objects, filteredObjects: tempObjects, Latitude: Lat, Longitude: Lon, currentFilter: this.state.value}}} />;
     } else if (this.state.locSelect !== 'tileSearch') {
       return <Redirect push to={{pathname: '/Location/' + this.state.locSelect + '/' + this.props.location.state.stringy, state: {locSelect: this.state.locSelect, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
     } else {
@@ -75,11 +99,14 @@ class TilePage extends React.Component {
             style={style}
             options={masonryOptions}
           >
-          {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
+
+          <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
+          <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
+          {/*<Navigation />*/}
+           {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
             return (
               <div key={object.coverPhoto}>
-                {console.log(object)}
-                <div>
+                <div id="columns">
                   <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
                 </div>
               </div>
@@ -92,6 +119,5 @@ class TilePage extends React.Component {
     }
   }
 }
-
 
 export default TilePage;

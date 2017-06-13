@@ -31,6 +31,17 @@ body {
 
 }
 
+.filter {
+  text-align: right;
+  margin-right: 18px;
+}
+
+
+#search {
+  padding-left: 10px;
+}
+
+
 #tile {
   background-color: #f3f5f6;
   position: fixed;
