@@ -7,6 +7,16 @@ import MapView from './MapView.jsx';
 import Navigation from './Navigation.jsx';
 import { Redirect } from 'react-router';
 const queryString = require('query-string');
+import Masonry from 'react-masonry-component';
+import MasonryInfiniteScroller from 'react-masonry-infinite';
+
+var masonryOptions = {
+    transitionDuration: 0
+};
+
+var style= {
+  paddingLeft: "100px"
+}
 
 class TilePage extends React.Component {
   constructor(props) {
@@ -51,20 +61,32 @@ class TilePage extends React.Component {
       return <Redirect push to={{pathname: '/IndivComponent/' + this.state.locSelect, state: {locSelect: this.state.locSelect}}} />;
     } else {
       return (
-        <div className="container" id="tile">
+        <div id="tile">
           <MapView searchCoordinates={this.state.searchCoordinates}/>
-          <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
-          <Navigation />
+         <div className="container-fluid-fullwidth">
+          <div className="searched-location">
+          {this.props.location.state.searchedLocation}
+          </div>
+          <div className="explore">
+          <h> Explore </h>
+          </div>
+          <Masonry
+            className={'locations-masonry'}
+            style={style}
+            options={masonryOptions}
+          >
           {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
             return (
               <div key={object.coverPhoto}>
                 {console.log(object)}
-                <div id="columns">
+                <div>
                   <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
                 </div>
               </div>
             );
           }) : console.log('The map has only the ...Loading portion')} 
+          </Masonry>
+          </div>
         </div>
       );
     }
