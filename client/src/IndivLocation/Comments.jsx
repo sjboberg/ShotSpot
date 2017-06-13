@@ -14,7 +14,7 @@ class Comments extends React.Component {
         {(this.props.comments) ? this.props.comments.map((comments, i) => {
           return (
             <div key={i}>
-              <a className="username"> {comments.username} </a>
+              <a className="username"> <i className="user icon"></i>{comments.username} </a>
               <h3 className="user-comment"> {comments.content}</h3>
             </div>
           );
