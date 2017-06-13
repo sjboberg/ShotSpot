@@ -76,6 +76,8 @@ class TilePage extends React.Component {
     let parsed = queryString.parse(url);
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);
+    let coordinates = queryString.stringify({latitude: parsed.latitude, longitude: parsed.longitude});
+    let stringyAlt = (this.props.location.state) ? this.props.location.state.stringy : coordinates;
     let Lat = (this.props.location.state) ? this.props.location.state.Latitude : parsed.latitude;
     let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude;
     let filterUrlString = (parsed.filter) ? queryString.stringify(parsed.filter) : queryString.stringify({filter: this.state.value});
@@ -84,7 +86,7 @@ class TilePage extends React.Component {
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + filterUrlString + '&' + urlbigmap, state: {objects: this.state.objects, filteredObjects: tempObjects, Latitude: Lat, Longitude: Lon, currentFilter: this.state.value}}} />;
     } else if (this.state.locSelect !== 'tileSearch') {
-      return <Redirect push to={{pathname: '/Location/' + this.state.locSelect + '/' + this.props.location.state.stringy, state: {locSelect: this.state.locSelect, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
+      return <Redirect push to={{pathname: '/Location/' + this.state.locSelect + '/' + stringyAlt, state: {locSelect: this.state.locSelect, Latitude: Lat, Longitude: Lon}}} />;
     } else {
       return (
         <div id="tile">
