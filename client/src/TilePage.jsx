@@ -92,7 +92,6 @@ class TilePage extends React.Component {
           {this.props.location.state.searchedLocation}
           </div>
           <div className="explore">
-          <h> Explore </h>
           </div>
            <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
           <Masonry
