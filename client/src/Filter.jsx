@@ -7,12 +7,9 @@ class Filter extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="filter">
         <select value={this.props.initVal} onChange={this.props.handleChangeFilter}>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+          {this.props.coordObjs.map((value, i) => { return <option key={i} value={value.category}>{value.category}</option>; })}
         </select>
       </div>
     );

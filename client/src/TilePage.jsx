@@ -22,7 +22,7 @@ var style= {
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'volvo'};
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: ''};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
   }
 
@@ -84,7 +84,7 @@ class TilePage extends React.Component {
           >
 =======
           <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
-          <Filter initVal={this.state.value} handleChangeFilter={this.handleChangeFilter}/>
+          <Filter coordObjs={this.state.objects} initVal={this.state.value} handleChangeFilter={this.handleChangeFilter}/>
           <Navigation />
 >>>>>>> "filter now passes selection to tilemap state"
           {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
