@@ -7,8 +7,7 @@ import MapView from './MapView.jsx';
 import Navigation from './Navigation.jsx';
 import Filter from './Filter.jsx';
 import { Redirect } from 'react-router';
-<<<<<<< HEAD
-const queryString = require('query-string');
+import queryString from 'query-string';
 import Masonry from 'react-masonry-component';
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 
@@ -19,9 +18,6 @@ var masonryOptions = {
 var style= {
   paddingLeft: "100px"
 }
-=======
-import queryString from 'query-string';
->>>>>>> "fixed import and require"
 
 class TilePage extends React.Component {
   constructor(props) {
@@ -91,7 +87,6 @@ class TilePage extends React.Component {
       return (
         <div id="tile">
           <MapView searchCoordinates={this.state.searchCoordinates}/>
-<<<<<<< HEAD
          <div className="container-fluid-fullwidth">
           <div className="searched-location">
           {this.props.location.state.searchedLocation}
@@ -104,23 +99,14 @@ class TilePage extends React.Component {
             style={style}
             options={masonryOptions}
           >
-=======
+
           <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
           <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
-          <Navigation />
-<<<<<<< HEAD
->>>>>>> "filter now passes selection to tilemap state"
-          {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
-            return (
-              <div key={object.coverPhoto}>
-                {console.log(object)}
-                <div>
-=======
-          {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
+          {/*<Navigation />*/}
+           {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
             return (
               <div key={object.coverPhoto}>
                 <div id="columns">
->>>>>>> "The individually filtered locations work, but not all locations"
                   <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
                 </div>
               </div>
