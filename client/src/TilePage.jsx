@@ -94,6 +94,7 @@ class TilePage extends React.Component {
           <div className="explore">
           <h> Explore </h>
           </div>
+           <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
           <Masonry
             className={'locations-masonry'}
             style={style}
@@ -101,7 +102,7 @@ class TilePage extends React.Component {
           >
 
           <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
-          <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
+         
           {/*<Navigation />*/}
            {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
             return (
