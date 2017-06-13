@@ -38,6 +38,7 @@ DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
   id BIGSERIAL NOT NULL,
   username VARCHAR(20),
+  password VARCHAR(20),
   PRIMARY KEY (id)
 );
 
@@ -116,6 +117,19 @@ CREATE TABLE landing_images (
   name VARCHAR(20),
   PRIMARY KEY (id)
 );
+
+-- ---
+-- Table 'session'
+-- 
+-- ---
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
 INSERT INTO photos (id, uri) VALUES (0, 'https://c1.staticflickr.com/5/4208/35000849792_1f62b924ba.jpg');
 
