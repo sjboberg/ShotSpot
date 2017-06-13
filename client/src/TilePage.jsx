@@ -45,7 +45,8 @@ class TilePage extends React.Component {
       this.setState({
         objects: results.data.locations,
         searchCoordinates: results.data.searchCoordinates,
-        url: stringyurl
+        url: stringyurl,
+        value: parsed.filter || 'View All Categories'
       });
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
@@ -89,7 +90,7 @@ class TilePage extends React.Component {
           <MapView searchCoordinates={this.state.searchCoordinates}/>
          <div className="container-fluid-fullwidth">
           <div className="searched-location">
-          {this.props.location.state.searchedLocation}
+           {(this.props.location.state) ? this.props.location.state.searchedLocation : (parsed.latitude + parsed.longitude)}
           </div>
           <div className="explore">
           </div>
