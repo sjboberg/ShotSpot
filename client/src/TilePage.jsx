@@ -26,7 +26,7 @@ import queryString from 'query-string';
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: [{default: 'default'}], locSelect: 'tileSearch', url: '', bigMap: false, value: 'View All Categories'};
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'View All Categories'};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
     this.filterFun = this.filterFun.bind(this);
   }
@@ -97,12 +97,20 @@ class TilePage extends React.Component {
           <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
           <Filter coordObjs={this.state.objects} initVal={this.state.value} handleChangeFilter={this.handleChangeFilter}/>
           <Navigation />
+<<<<<<< HEAD
 >>>>>>> "filter now passes selection to tilemap state"
           {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
             return (
               <div key={object.coverPhoto}>
                 {console.log(object)}
                 <div>
+=======
+          {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
+            return (
+              <div key={object.coverPhoto}>
+                {console.log(object, ' This is the objects being printed out')}
+                <div id="columns">
+>>>>>>> "The individually filtered locations work, but not all locations"
                   <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
                 </div>
               </div>
