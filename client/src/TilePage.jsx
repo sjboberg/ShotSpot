@@ -80,6 +80,7 @@ class TilePage extends React.Component {
     let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude;
     let filterUrlString = (parsed.filter) ? queryString.stringify(parsed.filter) : queryString.stringify({filter: this.state.value});
     let filterInitVal = parsed.filter || this.state.value;
+    
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + filterUrlString + '&' + urlbigmap, state: {objects: this.state.objects, filteredObjects: tempObjects, Latitude: Lat, Longitude: Lon, currentFilter: this.state.value}}} />;
     } else if (this.state.locSelect !== 'tileSearch') {
