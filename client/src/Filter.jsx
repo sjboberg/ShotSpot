@@ -7,10 +7,7 @@ class Filter extends React.Component {
 
   render() {
     let locNames = {};
-<<<<<<< e6f9372c05407765d9b69647bf2c156ef9aa8162
     
-=======
->>>>>>> "added view all categories to dropdown"
     locNames['View All Categories'] = 'default';
     (this.props.coordObjs.length > 1) ? this.props.coordObjs.forEach((value, i) => {
       locNames[value.category] = i;

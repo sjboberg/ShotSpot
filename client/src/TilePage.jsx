@@ -110,7 +110,7 @@ class TilePage extends React.Component {
                   <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
                 </div>
               </div>
-            );
+             );
            }) : console.log('The map has only the ...Loading portion')} 
           </Masonry>
           </div>
