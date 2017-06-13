@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
+  background-color: #f3f5f6;
 }
 
 #banner {
@@ -55,6 +56,7 @@ body {
   top: 0;
   left: 0;
 }
+
 
 
 .leaflet-container img {
@@ -178,14 +180,72 @@ hr {
   text-align: center;
 }
 
+#specific-locations {
+  background-color: #f3f5f6;
+  position: fixed;
+  background-size: cover;
+  background-height: 100%;
+  background-width: 100%;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
 
+}
+
+#photo-grid {
+  min-height: 100%;
+}
+
+.slider-list {
+  height: auto!important;
+}
+
+.slider-slide {
+  position: sticky!important;
+}
 .photographText {
-  color:black;
+  font-family: 'Open Sans', sans-serif;
 }
 .commentText {
-  color:black;
+  font-family: 'Open Sans', sans-serif;
 }
 
+.username {
+  padding-left: 10px;
+  padding-bottom: 0px;
+ font-family: 'Open Sans', sans-serif;
+ font-size: 20px;
+ margin: 0;
+}
+
+.user-comment {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  margin: 0;
+
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+a:active {
+    text-decoration: underline;
+}
 
 .NavBar {
   display: flex;
