@@ -36,6 +36,7 @@ class BigMap extends React.Component {
   }
 
   handleChangeFilter(event) {
+    console.log('this is the selection from handlechange from the bigmap: ', event.target.value);
     this.setState({value: event.target.value});
   }
 
@@ -58,7 +59,7 @@ class BigMap extends React.Component {
     let Lat = (this.props.location.state) ? this.props.location.state.Latitude : parsed.latitude;
     let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude;
     let filterUrlString = (parsed.filter) ? queryString.stringify(parsed.filter) : queryString.stringify({filter: this.state.value});
-    let filterInitVal = parsed.filter || this.state.value;
+    let filterInitVal = this.state.value || parsed.filter;
     let objects = (this.props.location.state) ? this.props.location.state.filteredObjects : this.state.objects;
     let initialValue = (this.props.location.state) ? this.props.location.state.currentFilter : 'View All Categories';
 

@@ -58,6 +58,7 @@ class TilePage extends React.Component {
   }
 
   handleChangeFilter(event) {
+    console.log('this is the selection from handlechangefilter that state is being changed to: ', event.target.value);
     this.setState({value: event.target.value});
   }
 
@@ -81,7 +82,7 @@ class TilePage extends React.Component {
     let Lat = (this.props.location.state) ? this.props.location.state.Latitude : parsed.latitude;
     let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude;
     let filterUrlString = (parsed.filter) ? queryString.stringify(parsed.filter) : queryString.stringify({filter: this.state.value});
-    let filterInitVal = parsed.filter || this.state.value;
+    let filterInitVal = this.state.value || parsed.filter;
     
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + filterUrlString + '&' + urlbigmap, state: {objects: this.state.objects, filteredObjects: tempObjects, Latitude: Lat, Longitude: Lon, currentFilter: this.state.value}}} />;
