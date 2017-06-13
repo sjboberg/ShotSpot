@@ -86,10 +86,10 @@ input[type="text"]{
   height: 100%;
 }
 
-.explore {
+.explore-filter {
   padding-left: 100px;
   padding-bottom:5px;
-  font-size: 22px;
+  font-size: 15px;
 }
 
 .img__img {
