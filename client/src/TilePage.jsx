@@ -101,7 +101,7 @@ class TilePage extends React.Component {
             options={masonryOptions}
           >
 
-          <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
+          {/*<h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>*/}
          
           {/*<Navigation />*/}
            {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
