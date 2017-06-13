@@ -12,24 +12,19 @@ import Masonry from 'react-masonry-component';
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 
 var masonryOptions = {
-    transitionDuration: 0
+  transitionDuration: 0
 };
 
-var style= {
-  paddingLeft: "100px"
-}
+var style = {
+  paddingLeft: '100px'
+};
 
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-<<<<<<< ee95024cfadb9cb8b962659d0caaca1c8ef7c6aa
     this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'View All Categories'};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
     this.filterFun = this.filterFun.bind(this);
-=======
-    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'volvo'};
-    this.handleChangeFilter = this.handleChangeFilter.bind(this);
->>>>>>> "filter now passes selection to tilemap state"
   }
 
   handleMapClick() {
@@ -65,7 +60,6 @@ class TilePage extends React.Component {
     this.setState({value: event.target.value});
   }
 
-<<<<<<< ee95024cfadb9cb8b962659d0caaca1c8ef7c6aa
   filterFun(value) {
     if (this.state.value !== 'View All Categories') {
       return value.category === this.state.value; 
@@ -74,8 +68,6 @@ class TilePage extends React.Component {
     }
   }
 
-=======
->>>>>>> "filter now passes selection to tilemap state"
   render() {
     let tempObjects = this.state.objects.filter(this.filterFun);
     let urlbigmap = (this.props.location.state) ? this.props.location.state.stringy : this.props.match.params.id;
@@ -83,8 +75,8 @@ class TilePage extends React.Component {
     let parsed = queryString.parse(url);
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);
-    let Lat = (this.props.location.state) ? this.props.location.state.Latitude : parsed.latitude
-    let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude
+    let Lat = (this.props.location.state) ? this.props.location.state.Latitude : parsed.latitude;
+    let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude;
     let filterUrlString = (parsed.filter) ? queryString.stringify(parsed.filter) : queryString.stringify({filter: this.state.value});
     let filterInitVal = parsed.filter || this.state.value;
     if (this.state.bigMap) {
@@ -112,14 +104,14 @@ class TilePage extends React.Component {
          
           {/*<Navigation />*/}
            {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
-            return (
+             return (
               <div key={object.coverPhoto}>
                 <div id="columns">
                   <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
                 </div>
               </div>
             );
-          }) : console.log('The map has only the ...Loading portion')} 
+           }) : console.log('The map has only the ...Loading portion')} 
           </Masonry>
           </div>
         </div>
