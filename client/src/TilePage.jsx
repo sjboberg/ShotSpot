@@ -5,6 +5,7 @@ import IndivComponent from './IndivComponent.jsx';
 import BigMap from './BigMap.jsx';
 import MapView from './MapView.jsx';
 import Navigation from './Navigation.jsx';
+import Filter from './Filter.jsx';
 import { Redirect } from 'react-router';
 const queryString = require('query-string');
 import Masonry from 'react-masonry-component';
@@ -21,7 +22,8 @@ var style= {
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false};
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'volvo'};
+    this.handleChangeFilter = this.handleChangeFilter.bind(this);
   }
 
   handleMapClick() {
@@ -54,6 +56,10 @@ class TilePage extends React.Component {
     this.setState({locSelect: componentID});
   }
 
+  handleChangeFilter(event) {
+    this.setState({value: event.target.value});
+  }
+
   render() {
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + this.props.location.state.stringy, state: {objects: this.state.objects, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
@@ -63,6 +69,7 @@ class TilePage extends React.Component {
       return (
         <div id="tile">
           <MapView searchCoordinates={this.state.searchCoordinates}/>
+<<<<<<< HEAD
          <div className="container-fluid-fullwidth">
           <div className="searched-location">
           {this.props.location.state.searchedLocation}
@@ -75,6 +82,11 @@ class TilePage extends React.Component {
             style={style}
             options={masonryOptions}
           >
+=======
+          <h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>
+          <Filter initVal={this.state.value} handleChangeFilter={this.handleChangeFilter}/>
+          <Navigation />
+>>>>>>> "filter now passes selection to tilemap state"
           {(this.state.objects.length > 1) ? this.state.objects.map((object) => {
             return (
               <div key={object.coverPhoto}>
