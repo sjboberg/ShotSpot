@@ -22,9 +22,14 @@ var style= {
 class TilePage extends React.Component {
   constructor(props) {
     super(props);
+<<<<<<< ee95024cfadb9cb8b962659d0caaca1c8ef7c6aa
     this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'View All Categories'};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
     this.filterFun = this.filterFun.bind(this);
+=======
+    this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'volvo'};
+    this.handleChangeFilter = this.handleChangeFilter.bind(this);
+>>>>>>> "filter now passes selection to tilemap state"
   }
 
   handleMapClick() {
@@ -60,6 +65,7 @@ class TilePage extends React.Component {
     this.setState({value: event.target.value});
   }
 
+<<<<<<< ee95024cfadb9cb8b962659d0caaca1c8ef7c6aa
   filterFun(value) {
     if (this.state.value !== 'View All Categories') {
       return value.category === this.state.value; 
@@ -68,6 +74,8 @@ class TilePage extends React.Component {
     }
   }
 
+=======
+>>>>>>> "filter now passes selection to tilemap state"
   render() {
     let tempObjects = this.state.objects.filter(this.filterFun);
     let urlbigmap = (this.props.location.state) ? this.props.location.state.stringy : this.props.match.params.id;
