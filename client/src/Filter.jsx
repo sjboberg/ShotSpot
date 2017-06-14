@@ -3,6 +3,15 @@ import React from 'react';
 class Filter extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {currentValue: 'View All Categories'};
+  }
+
+  componentWillMount() {
+    this.setState({currentValue: this.props.initValue});
+  }
+
+  handleStateChange (event) {
+    this.setState({currentValue: event.target.value});
   }
 
   render() {
