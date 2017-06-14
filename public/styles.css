@@ -59,6 +59,10 @@ body {
   left: 0;
 }
 
+.Mapnotifier {
+  margin: 10px;
+}
+
 .popinput {
   max-width: 150px;
   max-height: 20px;
@@ -98,6 +102,7 @@ input[type="text"]{
 }
 
 .explore-filter {
+  display: flex;
   padding-left: 100px;
   padding-bottom:5px;
   font-size: 15px;
