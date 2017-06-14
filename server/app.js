@@ -18,11 +18,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(fileUpload());
-app.use(router);
 
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(sessions(process.env.REDIS_URL, process.env.COOKIE_SECRET));
+
+app.use(router);
 
 
 app.get('*', function(req, res) {
