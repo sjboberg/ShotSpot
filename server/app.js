@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var router = require('./router/router.js');
 // var models = require('./models/models.js');
 var fileUpload = require('express-fileupload');
+var sessions = require('./sessions.js');
 
 
 var app = express();
@@ -20,6 +21,8 @@ app.use(fileUpload());
 app.use(router);
 
 app.use(express.static(path.join(__dirname, '../public')));
+
+app.use(sessions(process.env.REDIS_URL, process.env.COOKIE_SECRET));
 
 
 app.get('*', function(req, res) {
