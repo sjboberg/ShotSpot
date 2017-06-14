@@ -12,12 +12,12 @@ import Masonry from 'react-masonry-component';
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 
 var masonryOptions = {
-    transitionDuration: 0
+  transitionDuration: 0
 };
 
-var style= {
-  paddingLeft: "100px"
-}
+var style = {
+  paddingLeft: '100px'
+};
 
 class TilePage extends React.Component {
   constructor(props) {
@@ -45,7 +45,8 @@ class TilePage extends React.Component {
       this.setState({
         objects: results.data.locations,
         searchCoordinates: results.data.searchCoordinates,
-        url: stringyurl
+        url: stringyurl,
+        value: parsed.filter || 'View All Categories'
       });
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
@@ -57,6 +58,7 @@ class TilePage extends React.Component {
   }
 
   handleChangeFilter(event) {
+    console.log('this is the selection from handlechangefilter that state is being changed to: ', event.target.value);
     this.setState({value: event.target.value});
   }
 
@@ -75,21 +77,24 @@ class TilePage extends React.Component {
     let parsed = queryString.parse(url);
     parsed.latitude = parseFloat(parsed.latitude);
     parsed.longitude = parseFloat(parsed.longitude);
-    let Lat = (this.props.location.state) ? this.props.location.state.Latitude : parsed.latitude
-    let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude
+    let coordinates = queryString.stringify({latitude: parsed.latitude, longitude: parsed.longitude});
+    let stringyAlt = (this.props.location.state) ? this.props.location.state.stringy : coordinates;
+    let Lat = (this.props.location.state) ? this.props.location.state.Latitude : parsed.latitude;
+    let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude;
     let filterUrlString = (parsed.filter) ? queryString.stringify(parsed.filter) : queryString.stringify({filter: this.state.value});
-    let filterInitVal = parsed.filter || this.state.value;
+    let filterInitVal = this.state.value || parsed.filter;
+    
     if (this.state.bigMap) {
       return <Redirect push to={{pathname: '/BigMap/' + filterUrlString + '&' + urlbigmap, state: {objects: this.state.objects, filteredObjects: tempObjects, Latitude: Lat, Longitude: Lon, currentFilter: this.state.value}}} />;
     } else if (this.state.locSelect !== 'tileSearch') {
-      return <Redirect push to={{pathname: '/Location/' + this.state.locSelect + '/' + this.props.location.state.stringy, state: {locSelect: this.state.locSelect, Latitude: this.props.location.state.Latitude, Longitude: this.props.location.state.Longitude}}} />;
+      return <Redirect push to={{pathname: '/Location/' + this.state.locSelect + '/' + stringyAlt, state: {locSelect: this.state.locSelect, Latitude: Lat, Longitude: Lon}}} />;
     } else {
       return (
         <div id="tile">
           <MapView searchCoordinates={this.state.searchCoordinates}/>
          <div className="container-fluid-fullwidth">
           <div className="searched-location">
-          {this.props.location.state.searchedLocation}
+           {(this.props.location.state) ? this.props.location.state.searchedLocation : (parsed.latitude + parsed.longitude)}
           </div>
           <div className="explore">
           </div>
@@ -104,14 +109,14 @@ class TilePage extends React.Component {
          
           {/*<Navigation />*/}
            {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
-            return (
+             return (
               <div key={object.coverPhoto}>
                 <div id="columns">
                   <TileThumb key={object.coverPhoto} locationSelect={this.locationSelect.bind(this)} photo={object.coverPhoto} id={object.id} name={object.name} latitude={object.coordinates.latitude} longitude= {object.coordinates.longitude} comments={object.comments}/>
                 </div>
               </div>
-            );
-          }) : console.log('The map has only the ...Loading portion')} 
+             );
+           }) : console.log('The map has only the ...Loading portion')} 
           </Masonry>
           </div>
         </div>

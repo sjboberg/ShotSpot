@@ -7,7 +7,8 @@ import TilePage from './TilePage.jsx';
 import ImageUpload from './ImageUpload.jsx';
 import SignIn from './SignIn.jsx';
 import Login from './Login.jsx';
-import IndivComponent from './IndivComponent.jsx'
+import IndivComponent from './IndivComponent.jsx';
+import Filter from './Filter.jsx';
 import BigMap from './BigMap.jsx';
 import Banner from './Banner.jsx';
 import { BrowserRouter as Router,
