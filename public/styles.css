@@ -277,3 +277,7 @@ a:active {
   text-decoration: none;
   color: #333333;
 }
+
+.NavBar a:hover {
+  color: teal;
+}
