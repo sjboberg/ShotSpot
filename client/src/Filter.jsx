@@ -22,11 +22,9 @@ class Filter extends React.Component {
       locNames[value.category] = i;
     }) : console.log('Waiting to get data');
     return (
-      <div className="filter">
-        <select value={this.props.initValue} onChange={this.props.handleChangeFilter}>
-          {console.log('this is the value in select: ', this.props.initValue)}
-          {console.log('These are the locNames being used as selections: ', locNames)}
-          {Object.keys(locNames).map((value, i) => { return (this.props.initValue !== value) ? <option key={i} value={value}>{value}</option> : <option key={i} value={value} selected >{value}</option>; })}
+      <div className="explore-filter">
+        <select name='categories' className="ui fluid dropdown" multiple="" id="filter-button"value={this.props.initValue} onChange={this.props.handleChangeFilter}>
+          {Object.keys(locNames).map((value, i) => { return (this.props.initValue !== value) ? <option key={i} value={value}>{value}</option> : <option key={i} value={value} selected  >{value}</option>})}
         </select>
       </div>
     );
