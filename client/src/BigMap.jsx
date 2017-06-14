@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Filter from './Filter.jsx';
+import PopupComponent from './PopupComp.jsx';
 import queryString from 'query-string';
 
 class BigMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false, value: 'View All Categories'};
+    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false, value: 'View All Categories', popCat: '', position: [0, 0], popupLocation: ''};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
     this.filterFun = this.filterFun.bind(this);
+    this.showPopup = this.showPopup.bind(this);
+    this.popupSubmit = this.popupSubmit.bind(this);
+    this.locationPopupText = this.locationPopupText.bind(this);
+    this.categoryPopupText = this.categoryPopupText.bind(this);
   }
 
   componentWillMount() {
@@ -33,6 +38,37 @@ class BigMap extends React.Component {
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
     });
+  }
+
+  locationPopupText(e){
+    this.setState({popupLocation: e.target.value})
+  }
+
+  categoryPopupText(e){
+    this.setState({popCat: e.target.value});
+  }
+
+  showPopup(e) {
+    console.log('This is the show coords: ', e);
+    let latcoord = e.latlng.lat;
+    let loncoord = e.latlng.lng;
+    this.setState({position: [latcoord, loncoord]});
+  }
+
+  popupSubmit() {
+    let locationcoords = {};
+    locationcoords.name = this.state.popupLocation;
+    locationcoords.coords = this.state.position;
+    locationcoords.category = this.state.popCat;
+    axios({
+      method: "POST",
+      url: '/bigmap/popupSubmit',
+      data: locationcoords
+    }).then((results) => {
+      console.log(results, ' :This is from bigmaps popup');
+    }).catch((error) => {
+      console.log(error, 'This is from the bigmap popup');
+    })
   }
 
   handleChangeFilter(event) {
@@ -66,13 +102,25 @@ class BigMap extends React.Component {
     return (
       <div>
         <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
-        <Map
+        <Map 
+          onClick={this.showPopup}
           style={{height: '100vh'}}
           center={position}
           zoom={10}>
           <TileLayer
             url="https://api.mapbox.com/styles/v1/fabbous/cj3gnpyq200112rtiabmb608s/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmFiYm91cyIsImEiOiJjajNnbmlmNmQwMDRlMnFxc3Nwdms0dGV1In0.3IAYFLfwY1Z_eh1OxEognA"
             attribution="<attribution>" />
+              <Marker position= {this.state.position}>
+                <Popup>
+                  <span>
+                    <form>
+                      <input className="popinput" type="text" onChange={this.locationPopupText} placeholder="Name this location"></input>
+                      <input className="popinput" type="text" onChange={this.categoryPopupText} placeholder="Category"></input>
+                      <input onClick={this.popupSubmit} type="submit"></input>
+                    </form>
+                  </span>
+                </Popup>
+              </Marker>
             {(this.state.objects !== 'loading in bigmap') ? tempObjects.map((location, i) => {
               return (
                 <div key={i}>

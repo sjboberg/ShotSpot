@@ -25,6 +25,19 @@ exports.tilePane = {
   }
 }
 
+exports.bigmapSubmit = {
+  post: function(req, res) {
+    console.log(req.body);
+    res.sendStatus(200);
+  }
+}
+
+exports.login = {
+  post: function(req, res) {
+    console.log('These are the values from login: ', req.body);
+  }
+}
+
 exports.listPhotos = {
   post: function(req, res) {
       let radiustoSearch = 25; //Miles
