@@ -4,6 +4,10 @@ var controllers = require('../controllers/controllers.js');
 
 router.post('/login', controllers.login.post);
 
+router.post('/logout', controllers.logout.post);
+
+router.post('/signup', controllers.signup.post);
+
 router.post('/search/results', controllers.tilePane.post);
 
 router.post('/tilePage/getPhotosInRange', controllers.listPhotos.post);
