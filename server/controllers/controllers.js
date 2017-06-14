@@ -193,7 +193,6 @@ exports.login = {
         console.log(err);
         res.send(err);
       } else {
-        console.log(result)
         if (result.length === 0) {
           console.log('Wrong login or password');
           res.send('Wrong login or password');
