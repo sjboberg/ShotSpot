@@ -13,7 +13,7 @@ class Navigation extends React.Component {
         <Link to={'/'}>Home</Link>
         <Link to={'/ImageUpload'}>Upload Photo </Link>
         <Link to={'/SignIn'}>Sign Up</Link>
-        <Link to={'/Login'}>Login</Link>
+        <Link to={'/Login'}>Sign In</Link>
       </div>
     )
   }
