@@ -219,3 +219,20 @@ exports.login = {
     });
   }
 }
+
+exports.logout = {
+  post: function(req, res) {
+    console.log('controllers.js logout post');
+    req.session.destroy(function(err) {
+      if (err) {
+        res
+          .status(404)
+          .send();
+      } else {
+        res
+          .status(200)
+          .send('Logout Successful');
+      }
+    });
+  }
+}
