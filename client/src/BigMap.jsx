@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Filter from './Filter.jsx';
+import PopupComponent from './PopupComp.jsx';
 import queryString from 'query-string';
 
 class BigMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false, value: 'View All Categories'};
+    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false, value: 'View All Categories', position: [0, 0]};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
     this.filterFun = this.filterFun.bind(this);
+    this.showCoords = this.showCoords.bind(this);
   }
 
   componentWillMount() {
@@ -33,6 +35,13 @@ class BigMap extends React.Component {
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
     });
+  }
+
+  showCoords(e) {
+    console.log('This is the show coords: ', e);
+    let latcoord = e.latlng.lat;
+    let loncoord = e.latlng.lng;
+    this.setState({position: [latcoord, loncoord]});
   }
 
   handleChangeFilter(event) {
@@ -66,13 +75,16 @@ class BigMap extends React.Component {
     return (
       <div>
         <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
-        <Map
+        <Map 
+          onClick={this.showCoords}
           style={{height: '100vh'}}
           center={position}
           zoom={10}>
           <TileLayer
             url="https://api.mapbox.com/styles/v1/fabbous/cj3gnpyq200112rtiabmb608s/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmFiYm91cyIsImEiOiJjajNnbmlmNmQwMDRlMnFxc3Nwdms0dGV1In0.3IAYFLfwY1Z_eh1OxEognA"
             attribution="<attribution>" />
+              <Marker position= {this.state.position}>
+              </Marker>
             {(this.state.objects !== 'loading in bigmap') ? tempObjects.map((location, i) => {
               return (
                 <div key={i}>
