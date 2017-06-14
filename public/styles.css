@@ -57,6 +57,11 @@ body {
   left: 0;
 }
 
+.popinput {
+  max-width: 150px;
+  max-height: 20px;
+}
+
 .map-wrap :hover {
   opacity: 0.5;
 }
