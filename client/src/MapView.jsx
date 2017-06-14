@@ -10,7 +10,7 @@ export class MapView extends React.Component {
   render() {
     
     return (
-      <div className="map-wrap">
+      <div className="map-wrap" onClick={this.props.mapClick}>
         <div className="map-description"> click map to explore </div>
         <Map className="map-image"
           style={{height: '35vh'}}

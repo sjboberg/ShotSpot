@@ -57,7 +57,9 @@ body {
   left: 0;
 }
 
-
+.map-wrap :hover {
+  opacity: 0.5;
+}
 
 .leaflet-container img {
   width:200px;

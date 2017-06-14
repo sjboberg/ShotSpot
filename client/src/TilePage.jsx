@@ -25,6 +25,7 @@ class TilePage extends React.Component {
     this.state = {objects: ['...Loading'], locSelect: 'tileSearch', url: '', bigMap: false, value: 'View All Categories'};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
     this.filterFun = this.filterFun.bind(this);
+    this.handleMapClick = this.handleMapClick.bind(this);
   }
 
   handleMapClick() {
@@ -91,7 +92,7 @@ class TilePage extends React.Component {
     } else {
       return (
         <div id="tile">
-          <MapView searchCoordinates={this.state.searchCoordinates}/>
+          <MapView searchCoordinates={this.state.searchCoordinates} mapClick={this.handleMapClick}/>
          <div className="container-fluid-fullwidth">
           <div className="searched-location">
            {(this.props.location.state) ? this.props.location.state.searchedLocation : (parsed.latitude + parsed.longitude)}
@@ -104,8 +105,6 @@ class TilePage extends React.Component {
             style={style}
             options={masonryOptions}
           >
-
-          {/*<h2 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h2>*/}
          
           {/*<Navigation />*/}
            {(this.state.objects !== ['...Loading']) ? tempObjects.map((object) => {
