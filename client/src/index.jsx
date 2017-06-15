@@ -12,6 +12,7 @@ import IndivComponent from './IndivComponent.jsx';
 import Filter from './Filter.jsx';
 import BigMap from './BigMap.jsx';
 import Banner from './Banner.jsx';
+import Logout from './Logout.jsx';
 import { BrowserRouter as Router,
          Route,
          Link
@@ -48,6 +49,7 @@ ReactDOM.render(
     <Route path="/Signup" component={SignUp} />
     <Route path="/Login" component={Login} />
     <Route path="/BigMap/:id" component={BigMap} />
+    <Route path="/Logout" component={Logout} />
   </div>
 </Router>
 , document.getElementById('app'));
