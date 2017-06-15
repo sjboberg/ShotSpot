@@ -63,6 +63,23 @@ body {
   margin: 10px;
 }
 
+input.userComment {
+  max-width: 300px;
+}
+
+input.commentBlock {
+    min-height: 70px;
+}
+
+form.formComments {
+    display: grid;
+}
+
+input.submitComment {
+    margin-top: 10px;
+    max-width: 100px;
+}
+
 .popinput {
   max-width: 150px;
   max-height: 20px;

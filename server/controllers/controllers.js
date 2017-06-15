@@ -76,6 +76,13 @@ exports.listPhotos = {
     }
   }
 
+exports.postComment = {
+  post: (req, res) => {
+    console.log(req.body);
+    res.sendStatus(200);
+  }
+}
+
 // Should refactor this to use promises to avoid the cb pyramid
 exports.getLocationContent = {
   post: (req, res) => {
