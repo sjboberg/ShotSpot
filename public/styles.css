@@ -77,6 +77,9 @@ body {
   text-align: center;
 }
 
+
+
+
 #input {
   margin: auto;
   margin-left: 125px;
@@ -165,15 +168,16 @@ input[type="text"]{
 
 .map-description {
   position: absolute;
-  top: 175px;
+  top: 100px;
   bottom: 0;
-  left: 5px;
+  left: 20px;
   right: 0;
   color: black;
   font-weight: 900;
-  font-size: 15px;
+  font-size: 20px;
   visibility: hidden;
   opacity: 0;
+  font-family: 'Open Sans', sans-serif;
 
   /* transition effect. not necessary */
   transition: opacity .2s, visibility .2s;
