@@ -68,6 +68,13 @@ body {
   opacity: 0.5;
 }
 
+.big-map-wrap :hover {
+  opacity: 0.5;
+}
+
+
+
+
 .leaflet-container img {
   width:200px;
 }
@@ -107,6 +114,28 @@ input[type="text"]{
   font-family: 'Open Sans', sans-serif;
   font-weight: 900;
 }
+
+.big-map-filter {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom:10px;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 900;
+}
+
+#big-map {
+  padding-top: 10px;
+   background-color: #f3f5f6;
+}
+#big-map-tip {
+  padding-top: 100px;
+  padding-left: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 900;
+}
+
 
 .img__img {
   padding-right: 50px;
@@ -166,6 +195,8 @@ input[type="text"]{
   position: relative;
 }
 
+
+
 .map-description {
   position: absolute;
   top: 180px;
@@ -179,19 +210,22 @@ input[type="text"]{
   opacity: 0;
   font-family: 'Open Sans', sans-serif;
 
+
   /* transition effect. not necessary */
   transition: opacity .2s, visibility .2s;
+  transition-duration: 3s;
 }
+
+
+
+
 
 .map-wrap:hover .map-description {
   visibility: visible;
   opacity: 1;
 }
 
-hr {
-    clear: both;
-    visibility: hidden;
-}
+
 
 .searched-location {
   font-family: 'Open Sans', sans-serif;
@@ -269,6 +303,8 @@ a:hover {
 a:active {
     text-decoration: underline;
 }
+
+
 
 .NavBar {
   border: 1px solid gray;
