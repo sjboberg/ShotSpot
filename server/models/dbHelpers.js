@@ -33,9 +33,9 @@ exports.addLocation = (name, coordinates, cb) => {
   });
 };
 
-exports.addPhoto = (locationId, userId, uri, cb) => {
-  var query = 'INSERT INTO photos (location_id, user_id, uri, date) VALUES ($1, $2, $3, CURRENT_TIMESTAMP);';
-  pool.query(query, [locationId, userId, uri], function (err, result) {
+exports.addPhoto = (locationId, username, uri, cb) => {
+  var query = 'INSERT INTO photos (location_id, user_id, uri, date) VALUES ($1, (SELECT id FROM users WHERE username = $2), $3, CURRENT_TIMESTAMP);';
+  pool.query(query, [locationId, username, uri], function (err, result) {
     if (err) {
       cb(err, null);
     } else {
@@ -55,9 +55,9 @@ exports.getPhotoUrl = (photoId, cb) => {
   });
 };
 
-exports.addLocationComment = (locationId, userId, content, cb) => {
-  var query = 'INSERT INTO comments (location_id, user_id, content, date) VALUES ($1, $2, $3, CURRENT_TIMESTAMP);';
-  pool.query(query, [locationId, userId, content], function (err, result) {
+exports.addLocationComment = (locationId, username, content, cb) => {
+  var query = 'INSERT INTO comments (location_id, user_id, content, date) VALUES ($1, (SELECT id FROM users WHERE username = $2), $3, CURRENT_TIMESTAMP);';
+  pool.query(query, [locationId, username, content], function (err, result) {
     if (err) {
       cb(err, null);
     } else {
