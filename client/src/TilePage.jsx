@@ -47,7 +47,8 @@ class TilePage extends React.Component {
         objects: results.data.locations,
         searchCoordinates: results.data.searchCoordinates,
         url: stringyurl,
-        value: parsed.filter || 'View All Categories'
+        value: parsed.filter || 'View All Categories',
+        sessionUser: results.data.sessionUser
       });
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
