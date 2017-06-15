@@ -94,7 +94,8 @@ exports.getLocationContent = {
       name: '',
       coordinates: '',
       comments: [],
-      photos: []
+      photos: [],
+      sessionUser: auth.checkSession(req.session)
     };
     dbHelpers.getLocationInfo(req.body.locationId, (err, result) => {
       if (err) {
