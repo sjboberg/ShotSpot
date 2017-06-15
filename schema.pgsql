@@ -38,7 +38,7 @@ DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
   id BIGSERIAL NOT NULL,
   username VARCHAR(20),
-  password VARCHAR(20),
+  password TEXT,
   PRIMARY KEY (id)
 );
 
@@ -53,7 +53,7 @@ CREATE TABLE photos (
   id BIGSERIAL NOT NULL,
   location_id INTEGER REFERENCES locations(id),
   user_id INTEGER REFERENCES users(id),
-  uri VARCHAR(150),
+  uri TEXT,
   date DATE,
   like_count INTEGER DEFAULT 0,
   PRIMARY KEY (id)
@@ -100,7 +100,7 @@ DROP TABLE IF EXISTS quotes;
 
 CREATE TABLE quotes (
   id BIGSERIAL NOT NULL,
-  content VARCHAR(150),
+  content TEXT,
   PRIMARY KEY (id)
 );
 
