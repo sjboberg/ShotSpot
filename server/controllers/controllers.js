@@ -1,5 +1,5 @@
 require('dotenv').config()
-var flick = require('../models/flickr/upload.js');
+var flickr = require('../models/flickr/upload.js');
 var dbHelpers = require('../models/dbHelpers.js');
 var NodeGeocoder = require('node-geocoder');
 var distance = require('gps-distance');
@@ -9,7 +9,6 @@ var options = {
   provider: 'google'
 };
 var geocoder = NodeGeocoder(options);
-var flick = require('../models/flickr/upload.js');
 var bcrypt = require('bcrypt-nodejs');
 
 var shortid = require('shortid');
@@ -137,7 +136,17 @@ exports.imageUpload = {
     
     var uniqueFileName = path.join(__dirname, '../../public/images/' + newName + '.' + testimage[1])
     fs.renameSync(path.join(__dirname, '../../public/images/'+ image.name), uniqueFileName)
-    flick.upload(image.name, uniqueFileName)
+    flickr.upload(image.name, uniqueFileName, (err, url) => {
+      if (err) {
+        console.log(err);
+      } else {
+        dbHelpers.addPhoto(req.body.locationId, req.session.user, (err, result) => {
+          if (err) {
+            console.log(err);
+          }
+        })
+      }
+    })
     fs.unlink(uniqueFileName, (err) => {
       if (err) {
           console.log("failed to delete local image:" + err);
