@@ -10,6 +10,7 @@ var options = {
 };
 var geocoder = NodeGeocoder(options);
 var flick = require('../models/flickr/upload.js');
+var bcrypt = require('bcrypt-nodejs');
 
 var shortid = require('shortid');
 
@@ -119,7 +120,7 @@ exports.getLocationContent = {
   }
 }
 
-exports. imageUpload = {
+exports.imageUpload = {
   post: (req, res) => {
     if(!req.files){
       res.send('There was no image selected! Please try again');
@@ -139,9 +140,97 @@ exports. imageUpload = {
     flick.upload(image.name, uniqueFileName)
     fs.unlink(uniqueFileName, (err) => {
       if (err) {
-          console.log("failed to delete local image:"+err);
+          console.log("failed to delete local image:" + err);
       } else {
           console.log('successfully deleted local image');                                
+      }
+    });
+  }
+}
+
+exports.signup = {
+  post: (req, res) => {
+    console.log('beginning of model function for signup');
+    dbHelpers.getUser(req.body.username, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        if (result.length !== 0) {
+          console.log('USER EXISTS', result);
+          res.send('user exists');
+        } else {
+          // hash password and store
+          let salt = bcrypt.genSaltSync(10);
+          bcrypt.hash(req.body.password, salt, null, function (err, hash) {
+            if (err) {
+              console.log('Error hashing password', err);
+              res.send(err);
+            } else {
+              dbHelpers.addUser(req.body.username, hash, (err, result) => {
+                if (err) {
+                  console.log(err);
+                  res.send(err);
+                } else {
+                  req.session.user = req.body.username;
+                  console.log('User successfully created');
+                  res.send('user created');
+                }
+              });
+            }
+          });
+        }
+      }
+    });
+  }
+}
+
+exports.login = {
+  post: (req, res) => {
+    // update the logic. Get hashed password (err if null) => bcrypt compare if they match 
+    dbHelpers.getUser(req.body.username, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        if (result.length === 0) {
+          console.log('Wrong login or password');
+          res.send('Wrong login or password');
+        } else {
+          let retrievedPassword = result[0].password;
+          bcrypt.compare(req.body.password, retrievedPassword, function (err, result) {
+            if (err) {
+              console.log('Wrong login or password');
+              res.send('Wrong login or password');
+            } else {
+              if (result === true) {
+                req.session.user = req.body.username;
+                console.log('User successfully logged in Models');
+                res.send('user logged in');
+              } else {
+                console.log('Wrong login or password');
+                res.send('Wrong login or password');
+              }
+            }
+          });
+        }
+      }
+    });
+  }
+}
+
+exports.logout = {
+  post: function(req, res) {
+    console.log('controllers.js logout post');
+    req.session.destroy(function(err) {
+      if (err) {
+        res
+          .status(404)
+          .send();
+      } else {
+        res
+          .status(200)
+          .send('Logout Successful');
       }
     });
   }

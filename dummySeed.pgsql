@@ -6,10 +6,10 @@ INSERT INTO locations (name, coordinates, category_id) VALUES
 ('street art 2', '37.905197, -122.565637', 1),
 ('streets', '37.794757, -122.460072', 5);
 
-INSERT INTO users (username) VALUES 
-('sebastian'),
-('farrah'),
-('milos');
+INSERT INTO users (username, password) VALUES 
+('sebastian', '12345'),
+('farrah', '12345'),
+('milos', '12345');
 
 INSERT INTO photos (location_id, user_id, uri, date) VALUES 
 (1, 1, 'https://static.pexels.com/photos/27403/pexels-photo-27403.jpg', CURRENT_TIMESTAMP),

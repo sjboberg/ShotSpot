@@ -33,7 +33,7 @@ class Login extends React.Component {
 
   render(){
     return(
-      <form method="POST">
+      <form>
         <input ref="username" type="text" placeholder="UserName" onChange={this.handleUserName.bind(this)}></input>
         <input ref="password" type="text" placeholder="Password" onChange={this.handlePassword.bind(this)}></input>
         <input onClick={this.handleSubmit} type="submit"></input>

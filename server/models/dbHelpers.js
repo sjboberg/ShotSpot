@@ -1,12 +1,23 @@
 var pool = require('./dbConnection.js');
 
-exports.addUser = (username, cb) => {
-  var query = 'INSERT INTO users (username) VALUES ($1);';
-  pool.query(query, [username], function (err, result) {
+exports.addUser = (username, password, cb) => {
+  var query = 'INSERT INTO users (username, password) VALUES ($1, $2);';
+  pool.query(query, [username, password], function (err, result) {
     if (err) {
       cb(err, null);
     } else {
       cb(null, true);
+    }
+  });
+};
+
+exports.getUser = (username, cb) => {
+  var query = 'SELECT * FROM users WHERE username = $1;';
+  pool.query(query, [username], function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.rows);
     }
   });
 };
