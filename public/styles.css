@@ -168,7 +168,7 @@ input[type="text"]{
 
 .map-description {
   position: absolute;
-  top: 100px;
+  top: 200px;
   bottom: 0;
   left: 20px;
   right: 0;
@@ -273,14 +273,14 @@ a:active {
 .NavBar {
   display: flex;
   height: 40px;
-  background-color: #f9f9f9;
+  background-color: #e6e6e6;
 
 }
 
 
 .NavBar a {
   margin: 0 auto;
-  background-color: #f9f9f9;
+  background-color: #e6e6e6;
   color: #333333;
   font-family: 'Open Sans', sans-serif;
   font-weight: 900;
