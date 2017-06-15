@@ -59,10 +59,23 @@ body {
   left: 0;
 }
 
+
+
 .popinput {
+  background-color: #f3f5f6 ;
   max-width: 150px;
-  max-height: 20px;
+  max-height: 30px;
+  font-family: 'Open Sans', sans-serif;
 }
+
+#pop-input-button {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  margin-top: 10px;
+
+}
+
+
 
 .map-wrap :hover {
   opacity: 0.5;
