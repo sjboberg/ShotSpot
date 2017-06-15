@@ -46,6 +46,9 @@ body {
 }
 
 #filter-button {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 180px;
 }
 #search {
@@ -55,7 +58,6 @@ body {
 
 #tile {
   background-color: #f3f5f6;
-  position: fixed;
   background-size: cover;
   background-height: 100%;
   background-width: 100%;
@@ -138,8 +140,9 @@ input[type="text"]{
 .locations-masonry {
   display: flex;
   flex-flow: row wrap;
+  margin-left: -80px;
+  margin-right: 100px;
   width: 100%;
-  padding-bottom: 100px;
 }
 
 .explore-filter {
@@ -151,9 +154,9 @@ input[type="text"]{
   font-weight: 900;
 }
 
-.big-map-filter {
+#big-map-filter {
   padding-top: 10px;
-  padding-left: 20px;
+  padding-left: 50px;
   padding-bottom:10px;
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;
@@ -213,7 +216,6 @@ input[type="text"]{
   font-size: 15px;
   color: #b5b7b9;
   background: #45484f;
-  position: fixed;
   background-size: cover;
   background-height: 100%;
   background-width: 100%;
@@ -273,7 +275,6 @@ input[type="text"]{
 
 #specific-locations {
   background-color: #f3f5f6;
-  position: fixed;
   background-size: cover;
   background-height: 100%;
   background-width: 100%;
