@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Filter from './Filter.jsx';
+import FilterBigMap from './FilterBigMap.jsx';
+
 import PopupComponent from './PopupComp.jsx';
 import queryString from 'query-string';
 
@@ -100,9 +102,10 @@ class BigMap extends React.Component {
     let initialValue = (this.props.location.state) ? this.props.location.state.currentFilter : 'View All Categories';
 
     return (
-      <div>
-        <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
-        <Map 
+      <div className="container-fluid-fullwidth" id="big-map">
+      <h id="big-map-tip"> Add a location by dropping a pin on the map </h> 
+        <FilterBigMap coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} /> 
+        <Map className="big-map-image"
           onClick={this.showPopup}
           style={{height: '100vh'}}
           center={position}
@@ -133,6 +136,7 @@ class BigMap extends React.Component {
               );
             }) : console.log('The objects have not loaded yet')}
         </Map>
+
       </div>
     );
   }
