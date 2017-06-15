@@ -9,12 +9,13 @@ import queryString from 'query-string';
 class BigMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false, value: 'View All Categories', popCat: '', position: [0, 0], popupLocation: ''};
+    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false, value: 'View All Categories', popCat: '', position: [0, 0], popupLocation: '', filterValue: 'View All Categories'};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
     this.filterFun = this.filterFun.bind(this);
     this.showPopup = this.showPopup.bind(this);
     this.popupSubmit = this.popupSubmit.bind(this);
     this.locationPopupText = this.locationPopupText.bind(this);
+    this.handleChangePopupFilter = this.handleChangePopupFilter.bind(this);
     this.categoryPopupText = this.categoryPopupText.bind(this);
   }
 
@@ -57,9 +58,8 @@ class BigMap extends React.Component {
 
   popupSubmit() {
     let locationcoords = {};
-    locationcoords.name = this.state.popupLocation;
     locationcoords.coords = this.state.position;
-    locationcoords.category = this.state.popCat;
+    locationcoords.category = this.state.filterValue;
     axios({
       method: "POST",
       url: '/bigmap/popupSubmit',
@@ -84,6 +84,11 @@ class BigMap extends React.Component {
     }
   }
 
+  handleChangePopupFilter(event) {
+    console.log('this is the selection from handlechangefilter that state is being changed to: ', event.target.value);
+    this.setState({filterValue: event.target.value});
+  }
+
   render() {
     let tempObjects = this.state.objects.filter(this.filterFun);
     let urlbigmap = (this.props.location.state) ? this.props.location.state.stringy : this.props.match.params.id;
@@ -96,6 +101,7 @@ class BigMap extends React.Component {
     let Lon = (this.props.location.state) ? this.props.location.state.Longitude : parsed.longitude;
     let filterUrlString = (parsed.filter) ? queryString.stringify(parsed.filter) : queryString.stringify({filter: this.state.value});
     let filterInitVal = this.state.value || parsed.filter;
+    let filterPopupInitVal = this.state.filterValue || parsed.filter;
     let objects = (this.props.location.state) ? this.props.location.state.filteredObjects : this.state.objects;
     let initialValue = (this.props.location.state) ? this.props.location.state.currentFilter : 'View All Categories';
 
@@ -114,8 +120,7 @@ class BigMap extends React.Component {
                 <Popup>
                   <span>
                     <form>
-                      <input className="popinput" type="text" onChange={this.locationPopupText} placeholder="Name this location"></input>
-                      <input className="popinput" type="text" onChange={this.categoryPopupText} placeholder="Category"></input>
+                      <Filter className="PopFilter" initValue={filterPopupInitVal} handleChangeFilter={this.handleChangePopupFilter}/>
                       <input onClick={this.popupSubmit} type="submit"></input>
                     </form>
                   </span>
