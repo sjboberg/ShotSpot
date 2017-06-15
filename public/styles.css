@@ -9,7 +9,7 @@ body {
   font-size: 18px;
   letter-spacing: 1px;
   margin: 60px;
-  text-align: center;
+  margin-left: 550px;
 
 }
 #banner {
@@ -105,7 +105,7 @@ body {
 
 #input {
   margin: auto;
-  margin-left: 125px;
+  margin-left: 225px;
   margin-top: 215px;
   position: absolute;
 }
