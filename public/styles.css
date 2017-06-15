@@ -271,9 +271,11 @@ a:active {
 }
 
 .NavBar {
+  border: 1px solid gray;
   display: flex;
   height: 40px;
   background-color: #e6e6e6;
+  margin-bottom: 10px;
 
 }
 
