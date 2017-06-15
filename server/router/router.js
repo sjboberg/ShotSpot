@@ -16,6 +16,8 @@ router.post('/images/upload', controllers.imageUpload.post);
 
 router.post('/locationPage/getContent', controllers.getLocationContent.post);
 
+router.post('/locationPage/postComment', controllers.postComment.post);
+
 router.post('/bigmap/popupSubmit', controllers.bigmapSubmit.post);
 
 module.exports = router;

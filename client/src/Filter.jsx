@@ -1,9 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 
 class Filter extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentValue: 'View All Categories'};
+    this.state = {currentValue: 'View All Categories', categories: ['Street Art', 'Astrophotography', 'Architecture', 'Landscape', 'Cityscape', 'Tourist', 'Nature']};
   }
 
   componentWillMount() {
@@ -16,11 +17,10 @@ class Filter extends React.Component {
 
   render() {
     let locNames = {};
-    
     locNames['View All Categories'] = 'default';
-    (this.props.coordObjs.length > 1) ? this.props.coordObjs.forEach((value, i) => {
-      locNames[value.category] = i;
-    }) : console.log('Waiting to get data');
+    this.state.categories.forEach((value, i) => {
+      locNames[value] = i;
+    });
     return (
       <div className="explore-filter">
         <select name='categories' className="ui fluid dropdown" multiple="" id="filter-button"value={this.props.initValue} onChange={this.props.handleChangeFilter}>

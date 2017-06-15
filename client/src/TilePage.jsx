@@ -59,7 +59,6 @@ class TilePage extends React.Component {
   }
 
   handleChangeFilter(event) {
-    console.log('this is the selection from handlechangefilter that state is being changed to: ', event.target.value);
     this.setState({value: event.target.value});
   }
 
@@ -94,10 +93,8 @@ class TilePage extends React.Component {
 
         <div id="tile">
           <MapView searchCoordinates={this.state.searchCoordinates} mapClick={this.handleMapClick}/>
-        <Navigation />
-
+          <Navigation />
          <div className="container-fluid-fullwidth">
-         <h4 onClick={this.handleMapClick.bind(this)}>Click me for mapview!</h4>
           <div className="searched-location">
            {(this.props.location.state) ? this.props.location.state.searchedLocation : (parsed.latitude + parsed.longitude)}
           </div>

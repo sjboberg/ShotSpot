@@ -4,13 +4,39 @@ import axios from 'axios';
 class Comments extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {comments: 'Can you see this comment?'};
+    this.state = {comments: 'Can you see this comment?', username: 'req.session.user', usercomment: '', locationId: ''};
+    this.handleuserComment = this.handleuserComment.bind(this);
+    this.oncommentSubmit = this.oncommentSubmit.bind(this);
+  }
+
+  handleuserComment (e) {
+    this.setState({usercomment: e.target.value});
+  }
+
+  oncommentSubmit() {
+    let postedComment = {};
+    postedComment.username = this.state.username;
+    postedComment.content = this.state.usercomment;
+    postedComment.locationId = this.props.locId;
+    axios({
+      url: '/locationPage/postComment',
+      method: "POST",
+      data: postedComment
+    }).then((result) => {
+      console.log('The comment has been successfully sent to the controller: ', result)
+    }).catch((error) => {
+      console.log('There is an error in posting the comment: ', error);
+    })
   }
 
   render() {
     return (
       <div className="container-fluid">
         <h3 className="commentText"> Comments </h3>
+        <form className= "formComments">
+          <input placeholder="Enter your comment here for this location." type="text" className="commentBlock" onChange={this.handleuserComment}></input>
+          <input onClick = {this.oncommentSubmit} className="submitComment" type="submit"></input>
+        </form>
         {(this.props.comments) ? this.props.comments.map((comments, i) => {
           return (
             <div key={i}>

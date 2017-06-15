@@ -26,15 +26,15 @@ class IndivComponent extends React.Component {
   }
 
   render() {
-    // let mapPosition = [this.props.location.state.Latitude, this.props.location.state.Longitude];
+    // let location = this.props.match.params.id;
     return (
       <div className="container-fluid-fullwidth" id="specific-locations">
-         {/*<Map />*/}
-          {/*<Navigation />*/}
+        {/*<Map />*/}
+        <Navigation />
         <hr></hr>
         <Photographs name= {this.state.location.name} photos={this.state.location.photos}/>
         <hr></hr>
-        <Comments name={this.state.location.name} comments={this.state.location.comments}/>
+        <Comments name={this.state.location.name} comments={this.state.location.comments} locId={this.props.match.params.id} />
       </div>
     );
   }

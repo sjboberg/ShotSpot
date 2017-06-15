@@ -59,6 +59,27 @@ body {
   left: 0;
 }
 
+.Mapnotifier {
+  margin: 10px;
+}
+
+input.userComment {
+  max-width: 300px;
+}
+
+input.commentBlock {
+    min-height: 70px;
+}
+
+form.formComments {
+    display: grid;
+}
+
+input.submitComment {
+    margin-top: 10px;
+    max-width: 100px;
+}
+
 .popinput {
   max-width: 150px;
   max-height: 20px;
@@ -98,6 +119,7 @@ input[type="text"]{
 }
 
 .explore-filter {
+  display: flex;
   padding-left: 100px;
   padding-bottom:5px;
   font-size: 15px;
