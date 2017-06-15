@@ -202,7 +202,26 @@ INSERT INTO likes (target_class, target_id, user_id) VALUES
 ('photo', 72, 1), 
 ('photo', 80, 1), 
 ('photo', 81, 1), 
-('photo', 83, 1);
+('photo', 83, 1),
+('location', 1, 1),
+('location', 2, 1),
+('location', 3, 1),
+('location', 4, 1),
+('location', 5, 1),
+('location', 6, 1),
+('location', 7, 1),
+('location', 8, 1),
+('location', 9, 1),
+('location', 10, 1),
+('location', 11, 1),
+('location', 2, 2),
+('location', 5, 2),
+('location', 8, 2),
+('location', 6, 2),
+('location', 2, 3),
+('location', 9, 3),
+('location', 6, 3),
+('location', 3, 3);
 
 INSERT INTO quotes (content) VALUES 
 ('"Sebastian is an incredible engineer and you should hire him" -Everyone');
