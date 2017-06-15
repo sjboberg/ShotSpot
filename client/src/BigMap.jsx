@@ -34,7 +34,8 @@ class BigMap extends React.Component {
         objects: results.data.locations,
         searchCoordinates: results.data.searchCoordinates,
         url: stringyurl,
-        value: parsed.filter || this.props.currentFilter
+        value: parsed.filter || this.props.currentFilter,
+        sessionUser: results.data.sessionUser
       });
     }).catch((error) => {
       console.log('This error is in the TilePage under getphotosinrange: ', error);
