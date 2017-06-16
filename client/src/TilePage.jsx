@@ -97,7 +97,7 @@ class TilePage extends React.Component {
           <Navigation allState = {this.state}/>
          <div className="container-fluid-fullwidth">
           <div className="searched-location">
-           {(this.props.location.state) ? this.props.location.state.searchedLocation : (parsed.latitude + parsed.longitude)}
+           {(this.props.location.state) ? this.props.location.state.city : (parsed.latitude + parsed.longitude)}
           </div>
 
           <div className="explore">
