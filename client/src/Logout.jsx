@@ -33,7 +33,7 @@ class Logout extends React.Component {
     }
     return(
      <div id="logout">
-      <h1 id="bye-text"> See you soon! Please wait three seconds to be redirected to our Home page. </h1>
+      <h1 id="bye-text"> See you soon! </h1>
      </div>
     )
   }
