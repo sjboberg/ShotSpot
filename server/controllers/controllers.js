@@ -165,7 +165,8 @@ exports.imageUpload = {
       if (err) {
         console.log(err);
       } else {
-        dbHelpers.addPhoto(req.body.locationId, req.session.user, (err, result) => {
+        console.log(req.body.username);
+        dbHelpers.addPhoto(req.body.locationId, req.body.username, url, (err, result) => {
           if (err) {
             console.log(err);
           }
