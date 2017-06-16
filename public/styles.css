@@ -61,10 +61,6 @@ body {
   font-family: 'Open Sans', sans-serif;
   padding-top: 50px;
   padding-left: 30px;
-  letter-spacing: 3.5px;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0px;
   color: white;
 
 }
@@ -97,18 +93,19 @@ body {
 
 }
 
-
+#login {
+  margin-top: 125px;
+  margin-left: 100px;
+}
 #username-login {
-  padding-bottom: 10px;
-  font-size: 7px;
+  font-size: 15px;
   width: 200px;
   margin-bottom: 0px;
   font-family: 'Open Sans', sans-serif;
 }
 
 #password-login {
-  padding-left: 10px;
-  font-size: 10px;
+  font-size: 15px;
   width: 200px;
   font-family: 'Open Sans', sans-serif;
 }
@@ -131,12 +128,21 @@ body {
 #create-an-account {
    position: absolute;
    margin-top: -80px;
-   margin-left: -30px;
+   margin-left: -20px;
    font-size: 20px;
    text-align: center;
    font-size: 30px;
    font-family: 'Open Sans', sans-serif;
 
+}
+
+#sign-in-title {
+  font-size: 30px;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 130px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
 }
 
 
@@ -468,8 +474,6 @@ input[type="text"]{
 }
 
 .username {
-  padding-left: 10px;
-  padding-bottom: 0px;
  font-family: 'Open Sans', sans-serif;
  font-size: 20px;
  margin: 0;

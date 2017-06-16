@@ -34,6 +34,7 @@ class Login extends React.Component {
   render(){
     return(
       <div id='signin' className="ui input focus">
+      <h1 id="sign-in-title">Sign In </h1>
       <form id="login">
         <h id="username"> username </h>
         <div></div>
