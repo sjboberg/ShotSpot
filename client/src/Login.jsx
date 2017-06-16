@@ -44,7 +44,6 @@ class Login extends React.Component {
         <input ref="password" type="text" placeholder="" id="password-login"onChange={this.handlePassword.bind(this)}></input>
         <div></div>
         <input className="ui blue button"onClick={this.handleSubmit} type="submit" value="SIGN IN" id="login-button"></input>
-        <div></div>
       </form>
       </div>
 
