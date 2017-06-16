@@ -58,7 +58,9 @@ exports.listPhotos = {
               category: '',
               coordinates: '',
               coverPhoto: [],
-              comments: []
+              comments: [],
+              likeCount: '',
+              // commentCount: ''
             };
             let splitcoords = location.coordinates.split(',');
             let result = distance(req.body.latitude, req.body.longitude, splitcoords[0], splitcoords[1]);
@@ -69,10 +71,11 @@ exports.listPhotos = {
               content.category = location.category;
               content.coverPhoto.push(location.uri);
               content.coordinates = {latitude: splitcoords[0], longitude: splitcoords[1]};
+              content.likeCount = location.likecount;
+              // content.commentCount = location.commentCount;
               locationstosend.locations.push(content);
             }
           });
-          console.log(locationstosend);
           res.send(locationstosend);
         }
       });
