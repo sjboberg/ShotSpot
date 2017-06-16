@@ -82,7 +82,13 @@ exports.listPhotos = {
 exports.postComment = {
   post: (req, res) => {
     console.log(req.body);
-    res.sendStatus(200);
+    dbHelpers.addLocationComment(req.body.locationId, req.body.username, req.body.content, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.sendStatus(200);
+      }
+    })
   }
 }
 
