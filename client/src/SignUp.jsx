@@ -31,14 +31,24 @@ class SignUp extends React.Component {
     this.setState({password: e.target.value})
   }
 
+
   render(){
     return(
-      <div>
-        <h3> CLICK HERE TO SIGNUP Y'ALL </h3>
-        <form>
-          <input ref="username" type="text" placeholder="UserName" onChange={this.handleUserName.bind(this)}></input>
-          <input ref="password" type="text" placeholder="Password" onChange={this.handlePassword.bind(this)}></input>
-          <input onClick={this.handleSubmit} type="submit"></input>
+       <div id='signup' className="ui input focus">
+        <form id="signup-form">
+         <h id="username"> username </h>
+         <div></div>
+          <input ref="username" type="text" placeholder="" id='username-signup'onChange={this.handleUserName.bind(this)}></input>
+          <div></div>
+          <h id="username"> password </h>
+         <div></div>
+          <input ref="password" type="text" placeholder="" id='password-signup'onChange={this.handlePassword.bind(this)}></input>
+          <div></div>
+          <h id="username"> confirm your password </h>
+         <div></div>
+          <input ref="password" type="text" placeholder="" id='password-signup'onChange={this.handlePassword.bind(this)}></input>
+          <div></div>
+          <input className="ui blue button" onClick={this.handleSubmit} type="submit" value="SIGN UP" id="signup-button"></input>
         </form>
       </div>
     );
