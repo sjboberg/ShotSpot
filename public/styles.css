@@ -40,6 +40,53 @@ body {
 
 }
 
+
+#signin{
+  background-image: url('./images/SignIn.jpg');
+  background-size: cover;
+  background-height: 100%;
+  background-width: 100%;
+  min-height: 100%;
+  min-width: 1024px;
+  
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  
+  /* Set up positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 50px;
+  padding-left: 30px;
+  letter-spacing: 3.5px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: white;
+
+}
+
+
+#username-login {
+  padding-bottom: 10px;
+  font-size: 7px;
+  width: 200px;
+  margin-bottom: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#password-login {
+  padding-left: 10px;
+  font-size: 10px;
+  width: 200px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
 #logout{
   background-image: url('./images/Bye.jpg');
   background-size: cover;
@@ -68,6 +115,25 @@ body {
 
 }
 
+#username {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  padding-bottom: 0;
+
+}
+
+#password {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+
+}
+
+#login-button {
+  margin-top: 20px;
+  margin-left:60px;
+  width: 70px;
+  text-align: center;
+}
 
 #bye-text {
   text-align: center;
