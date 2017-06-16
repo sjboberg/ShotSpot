@@ -1,23 +1,35 @@
 import React from 'react';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
 
 class ImageUpload extends React.Component {
-  constructor(props){
+    constructor(props) {
     super(props);
+    console.log(this.props.locationId);
+    this.onDrop = this.onDrop.bind(this);
   }
 
-  render() {
+  onDrop(files){
+    var file = new FormData();
+    file.append('imageToUpload',files[0])
+    file.append('locationId', this.props.locationId)
+    file.append('username', this.props.sessionUser)
+    var req=request
+              .post('/images/upload')
+              .send(file);
+    req.end(function(err,response){
+        console.log("upload done!!!!!");
+    });
+  }
+
+  render(){
     return(
       <div>
-        <form ref='uploadForm' 
-          id='uploadForm' 
-          action='/images/upload' 
-          method='post' 
-          encType="multipart/form-data">
-            <input type="file" name="imageToUpload" />
-            <input type='submit' value='Upload!' />
-        </form>   
+        <Dropzone onDrop={this.onDrop}>
+          <div>Try dropping some files here, or click to select files to upload.</div>
+        </Dropzone>
       </div>
-    );
+          );
   }
 }
 
