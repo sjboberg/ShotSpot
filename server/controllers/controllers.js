@@ -16,12 +16,18 @@ var shortid = require('shortid');
 
 exports.tilePane = {
   post: function(req, res) {
-    var coordinates = {};
     geocoder.geocode(req.body.search, function(error, result) {
-      coordinates['Latitude'] = result[0].latitude;
-      coordinates['Longitude'] = result[0].longitude;
-      coordinates['Search'] = true;
-      res.send(coordinates);
+      var coordinates = {};
+      if(error){
+        console.log('The error is: ', error);
+      } else {
+        coordinates['Latitude'] = result[0].latitude;
+        coordinates['Longitude'] = result[0].longitude;
+        coordinates['Search'] = true;
+        coordinates['City'] = result[0].formattedAddress;
+        console.log(result);
+        res.send(coordinates);
+      }
     });
   }
 }
