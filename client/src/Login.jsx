@@ -33,11 +33,20 @@ class Login extends React.Component {
 
   render(){
     return(
-      <form>
-        <input ref="username" type="text" placeholder="UserName" onChange={this.handleUserName.bind(this)}></input>
-        <input ref="password" type="text" placeholder="Password" onChange={this.handlePassword.bind(this)}></input>
-        <input onClick={this.handleSubmit} type="submit"></input>
+      <div id='signin' className="ui input focus">
+      <form id="login">
+        <h id="username"> username </h>
+        <div></div>
+        <input ref="username" type="text" placeholder="" id="username-login"onChange={this.handleUserName.bind(this)}></input>
+        <div></div>
+        <h id="password"> password </h>
+        <div></div>
+        <input ref="password" type="text" placeholder="" id="password-login"onChange={this.handlePassword.bind(this)}></input>
+        <div></div>
+        <input className="ui blue button"onClick={this.handleSubmit} type="submit" value="SIGN IN" id="login-button"></input>
+        <div></div>
       </form>
+      </div>
 
     );
   }
