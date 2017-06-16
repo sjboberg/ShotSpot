@@ -5,11 +5,13 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Filter from './Filter.jsx';
 import PopupComponent from './PopupComp.jsx';
 import queryString from 'query-string';
+import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 class BigMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false, value: 'View All Categories', popCat: '', position: [0, 0], popupLocation: '', filterValue: 'View All Categories'};
+    this.state = {objects: ['loading in bigmap'], searchCoordinates: '', url: '', filteredObjects: false, value: 'View All Categories', popCat: '', position: [0, 0], popupLocation: '', filterValue: 'View All Categories', popupTrigger: false, popupID: 0};
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
     this.filterFun = this.filterFun.bind(this);
     this.showPopup = this.showPopup.bind(this);
@@ -17,6 +19,7 @@ class BigMap extends React.Component {
     this.locationPopupText = this.locationPopupText.bind(this);
     this.handleChangePopupFilter = this.handleChangePopupFilter.bind(this);
     this.categoryPopupText = this.categoryPopupText.bind(this);
+    // this.handlePopImageClick = this.handlePopImageClick.bind(this);
   }
 
   componentWillMount() {
@@ -90,7 +93,14 @@ class BigMap extends React.Component {
     this.setState({filterValue: event.target.value});
   }
 
+  handlePopImageClick(locater){
+    this.setState({popupTrigger: true, popupID: locater})
+  }
+
   render() {
+    if(this.state.popupTrigger){
+      return <Redirect push to={{pathname: '/Location/' + this.state.popupID}} />;
+    }
     let tempObjects = this.state.objects.filter(this.filterFun);
     let urlbigmap = (this.props.location.state) ? this.props.location.state.stringy : this.props.match.params.id;
     let url = this.props.match.params.id;
@@ -132,15 +142,14 @@ class BigMap extends React.Component {
               return (
                 <div key={i}>
                   <Marker position={[location.coordinates.latitude, location.coordinates.longitude]}>
-                    <Popup>
-                      <span><img src={location.coverPhoto} /> <hr/> {location.name}</span>
-                    </Popup>
+                      <Popup>
+                        <span><img onClick={this.handlePopImageClick.bind(this,location.id)} src={location.coverPhoto} />> <hr/> {location.name}</span>
+                      </Popup>
                   </Marker>
                 </div>
               );
             }) : console.log('The objects have not loaded yet')}
         </Map>
-
       </div>
     );
   }
