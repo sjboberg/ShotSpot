@@ -19,7 +19,10 @@ class IndivComponent extends React.Component {
       method: 'post',
       data: {locationId: location}
     }).then((results) => {
-      this.setState({location: results.data});
+      this.setState({
+        location: results.data,
+        sessionUser: results.data.sessionUser
+      });
     }).catch((error) => {
       console.log('This is an error from the IndivComponent page: ', error);
     });

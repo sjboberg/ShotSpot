@@ -5,6 +5,7 @@ var NodeGeocoder = require('node-geocoder');
 var distance = require('gps-distance');
 var path = require('path');
 var fs = require('fs');
+var auth = require('../authCheck.js');
 var options = {
   provider: 'google'
 };
@@ -43,7 +44,8 @@ exports.listPhotos = {
       let radiustoSearch = 25; //Miles
       let locationstosend = {
         locations: [],
-        searchCoordinates: [req.body.latitude, req.body.longitude]
+        searchCoordinates: [req.body.latitude, req.body.longitude],
+        sessionUser: auth.checkSession(req.session)
       };
       dbHelpers.getLocationsAndCoverPhotos((err, result) => {
         if (err) {
@@ -70,6 +72,7 @@ exports.listPhotos = {
               locationstosend.locations.push(content);
             }
           });
+          console.log(locationstosend);
           res.send(locationstosend);
         }
       });
@@ -91,7 +94,8 @@ exports.getLocationContent = {
       name: '',
       coordinates: '',
       comments: [],
-      photos: []
+      photos: [],
+      sessionUser: auth.checkSession(req.session)
     };
     dbHelpers.getLocationInfo(req.body.locationId, (err, result) => {
       if (err) {
