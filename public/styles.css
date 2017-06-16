@@ -64,8 +64,36 @@ body {
   letter-spacing: 3.5px;
   font-size: 10px;
   font-weight: 900;
-  letter-spacing: 4px;
+  letter-spacing: 0px;
   color: white;
+
+}
+
+#signup{
+  background-image: url('./images/SignUp.jpg');
+  background-size: cover;
+  background-height: 100%;
+  background-width: 100%;
+  min-height: 100%;
+  min-width: 1024px;
+  
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  
+  /* Set up positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 200px;
+  padding-left: 580px;
+  letter-spacing: 3.5px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0px;
+  color: #5b5b60;
 
 }
 
@@ -85,6 +113,26 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+#username-signup {
+  padding-bottom: 10px;
+  font-size: 15px;
+  width: 200px;
+  margin-bottom: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#password-signup {
+  padding-left: 10px;
+  font-size: 15px;
+  width: 200px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#create-an-account {
+   margin-top: -50px;
+   font-size: 20px;
+   text-align: center;
+}
 
 
 #logout{
@@ -129,6 +177,13 @@ body {
 }
 
 #login-button {
+  margin-top: 20px;
+  margin-left:60px;
+  width: 70px;
+  text-align: center;
+}
+
+#signup-button {
   margin-top: 20px;
   margin-left:60px;
   width: 70px;
