@@ -160,6 +160,7 @@ exports.imageUpload = {
     })
     
     var uniqueFileName = path.join(__dirname, '../../public/images/' + newName + '.' + testimage[1])
+    console.log('this is the unique file name: ', uniqueFileName)
     fs.renameSync(path.join(__dirname, '../../public/images/'+ image.name), uniqueFileName)
     flickr.upload(image.name, uniqueFileName, (err, url) => {
       if (err) {
