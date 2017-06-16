@@ -15,7 +15,7 @@ class Comments extends React.Component {
 
   oncommentSubmit() {
     let postedComment = {};
-    postedComment.username = this.state.username;
+    postedComment.username = this.props.sessionUser;
     postedComment.content = this.state.usercomment;
     postedComment.locationId = this.props.locId;
     axios({

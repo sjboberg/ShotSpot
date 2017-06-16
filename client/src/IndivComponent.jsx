@@ -37,7 +37,7 @@ class IndivComponent extends React.Component {
         <hr></hr>
         <Photographs name= {this.state.location.name} photos={this.state.location.photos}/>
         <hr></hr>
-        <Comments name={this.state.location.name} comments={this.state.location.comments} locId={this.props.match.params.id} />
+        <Comments name={this.state.location.name} comments={this.state.location.comments} locId={this.props.match.params.id} sessionUser={this.state.sessionUser} />
       </div>
     );
   }
