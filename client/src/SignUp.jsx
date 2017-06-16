@@ -42,11 +42,11 @@ class SignUp extends React.Component {
           <div></div>
           <h id="username"> password </h>
          <div></div>
-          <input ref="password" type="text" placeholder="" id='password-signup'onChange={this.handlePassword.bind(this)}></input>
+          <input ref="password" type="password" placeholder="" id='password-signup'onChange={this.handlePassword.bind(this)}></input>
           <div></div>
           <h id="username"> confirm your password </h>
          <div></div>
-          <input ref="password" type="text" placeholder="" id='password-signup'onChange={this.handlePassword.bind(this)}></input>
+          <input ref="password" type="password" placeholder="" id='password-signup'onChange={this.handlePassword.bind(this)}></input>
           <div></div>
           <input className="ui blue button" onClick={this.handleSubmit} type="submit" value="SIGN UP" id="signup-button"></input>
         </form>
