@@ -25,7 +25,6 @@ exports.tilePane = {
         coordinates['Longitude'] = result[0].longitude;
         coordinates['Search'] = true;
         coordinates['City'] = result[0].formattedAddress;
-        console.log(result);
         res.send(coordinates);
       }
     });
