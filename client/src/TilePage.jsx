@@ -100,8 +100,6 @@ class TilePage extends React.Component {
            {(this.props.location.state) ? this.props.location.state.searchedLocation : (parsed.latitude + parsed.longitude)}
           </div>
 
-          <div className="explore">
-          </div>
            <Filter coordObjs={this.state.objects} initValue={filterInitVal} handleChangeFilter={this.handleChangeFilter} />
           <Masonry
             className={'locations-masonry'}
