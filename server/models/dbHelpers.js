@@ -100,7 +100,8 @@ exports.getLocationInfo = (locationId, cb) => {
 };
 
 exports.getLocationsAndCoverPhotos = (cb) => {
-  var query = 'SELECT categories.name AS category, locations.id AS id, locations.name AS name, locations.coordinates AS coordinates, uri, locations.like_count AS likeCount \
+  var query = 'SELECT categories.name AS category, locations.id AS id, locations.name AS name, \
+  locations.coordinates AS coordinates, uri, locations.like_count AS likeCount, locations.comment_count AS commentCount \
   FROM locations, photos, categories \
   WHERE locations.cover_photo_id = photos.id \
   AND locations.category_id = categories.id;';
@@ -179,6 +180,24 @@ exports.updateLocationLikeCount = (cb) => {
   FROM counted c \
   WHERE c.target_class = 'location' \
   AND c.target_id = id;";
+  pool.query(query, function (err, result) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.command + ' ' + result.rowCount);
+    }
+  });
+};
+
+exports.updateLocationCommentCount = (cb) => {
+  var query = "WITH counted AS ( \
+    SELECT location_id, \
+    COUNT(*) \
+    FROM comments \
+    GROUP BY location_id) \
+  UPDATE locations SET comment_count = c.count \
+  FROM counted c \
+  WHERE c.location_id = id;";
   pool.query(query, function (err, result) {
     if (err) {
       cb(err, null);

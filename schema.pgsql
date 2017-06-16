@@ -25,6 +25,7 @@ CREATE TABLE locations (
   coordinates VARCHAR,
   cover_photo_id BIGINT DEFAULT 0,
   like_count INTEGER DEFAULT 0,
+  comment_count INTEGER DEFAULT 0,
   PRIMARY KEY (id)
 );
 
