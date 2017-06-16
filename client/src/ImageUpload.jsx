@@ -12,7 +12,7 @@ class ImageUpload extends React.Component {
   onDrop(files){
     var file = new FormData();
     file.append('imageToUpload',files[0])
-    file.append('locationId', this.props.locationId)
+    file.append('locationId', this.props.match.params.id)
     file.append('username', this.props.sessionUser)
     var req=request
               .post('/images/upload')
