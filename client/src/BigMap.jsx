@@ -125,7 +125,7 @@ class BigMap extends React.Component {
           onClick={this.showPopup}
           style={{height: '100vh'}}
           center={position}
-          zoom={10}>
+          zoom={12}>
           <TileLayer
             url="https://api.mapbox.com/styles/v1/fabbous/cj3gnpyq200112rtiabmb608s/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmFiYm91cyIsImEiOiJjajNnbmlmNmQwMDRlMnFxc3Nwdms0dGV1In0.3IAYFLfwY1Z_eh1OxEognA"
             attribution="<attribution>" />

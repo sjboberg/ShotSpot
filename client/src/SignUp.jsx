@@ -35,6 +35,7 @@ class SignUp extends React.Component {
   render(){
     return(
        <div id='signup' className="ui input focus">
+        <h1 id="create-an-account">Create An Account</h1>
         <form id="signup-form">
          <h id="username"> username </h>
          <div></div>

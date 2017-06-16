@@ -31,11 +31,11 @@ class Comments extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" id="comments">
         <h3 className="commentText"> Comments </h3>
-        <form className= "formComments">
-          <input placeholder="Enter your comment here for this location." type="text" className="commentBlock" onChange={this.handleuserComment}></input>
-          <input onClick = {this.oncommentSubmit} className="submitComment" type="submit"></input>
+        <form className= "ui input" id="comment-form">
+          <input placeholder="Have a tip about this location? Add here!" type="text" className="commentBlock" onChange={this.handleuserComment}></input>
+          <input onClick = {this.oncommentSubmit} className="ui blue button" type="submit" value="Add Comment" ></input>
         </form>
         {(this.props.comments) ? this.props.comments.map((comments, i) => {
           return (
