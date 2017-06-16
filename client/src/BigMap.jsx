@@ -64,6 +64,7 @@ class BigMap extends React.Component {
     let locationcoords = {};
     locationcoords.coords = this.state.position;
     locationcoords.category = this.state.filterValue;
+    locationcoords.location = this.state.popupLocation
     axios({
       method: "POST",
       url: '/bigmap/popupSubmit',
@@ -132,6 +133,7 @@ class BigMap extends React.Component {
                 <Popup>
                   <span>
                     <form id="input-form">
+                      <input onChange={this.locationPopupText} placeholder="Enter location name"></input>
                       <Filter className="PopFilter" initValue={filterPopupInitVal} handleChangeFilter={this.handleChangePopupFilter}/>
                       <input onClick={this.popupSubmit} type="submit" className="ui teal button" id="pop-input-button"></input>
                     </form>
