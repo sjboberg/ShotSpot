@@ -33,7 +33,7 @@ class IndivComponent extends React.Component {
     return (
       <div className="container-fluid-fullwidth" id="specific-locations">
         {/*<Map />*/}
-        <Navigation />
+        <Navigation allState = {this.state}/>
         <hr></hr>
         <Photographs name= {this.state.location.name} photos={this.state.location.photos}/>
         <hr></hr>
